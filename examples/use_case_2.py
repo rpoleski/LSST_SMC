@@ -1,13 +1,12 @@
 import numpy as np
 
-from ulenslsst import UlensLSST
-from utils import get_dicts_from_file
+from ulens_lsst_smc.ulenslsst import UlensLSST
+from ulens_lsst_smc.utils import get_dicts_from_file
 
 
-opsim_data_file = '15_baseline2018a_16.56875_-72.89689_EXPANDED_v1.dat'
-#opsim_data_file = '15_baseline2018a_16.56875_-72.89689_EXPANDED_v2.dat'
+opsim_data_file = '../data/15_baseline2018a_16.56875_-72.89689_EXPANDED_v1.dat'
 
-parameters_file = 'params_text.cfg'
+parameters_file = '../data/params_text.cfg'
 
 # settings end here
 
@@ -28,3 +27,4 @@ ulens.find_detection_time()
 print(ulens._detection_time)
 
 ulens.add_follow_up()
+

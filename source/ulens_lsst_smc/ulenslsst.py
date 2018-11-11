@@ -3,7 +3,7 @@ import math
 
 import MulensModel as MM
 
-import utils
+from ulens_lsst_smc import utils
 
 
 class UlensLSST(object):
@@ -68,7 +68,7 @@ class UlensLSST(object):
         self._detected = None
         self._follow_up = None
 
-        file_name = "SMC_Chile_visibility_v1.dat"
+        file_name = "../data/SMC_Chile_visibility_v1.dat"
         self._visibility = np.loadtxt(file_name, unpack=True, usecols=(0))
 
     def _LSST_uncertainties(self, mag, five_sigma_mag, band):
@@ -167,8 +167,6 @@ class UlensLSST(object):
                 sim = self._simulate_flux(times, five_sigma_mag, band)
                 self._simulated_flux[band] = sim[0]
                 self._sigma_flux[band] = sim[1]
-            #(simulated_flux, sigma_flux) = self._simulate_flux(
-                    #times, five_sigma_mag, band)
 
             date = self._get_detection_date_band(times, self._simulated_flux[band])
             if date is not None:

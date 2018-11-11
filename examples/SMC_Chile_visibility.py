@@ -7,7 +7,7 @@ from astropy.coordinates import SkyCoord, EarthLocation, AltAz, get_sun
 limit_target = 30.
 limit_sun = -15.
 
-file_out = "SMC_Chile_visibility_v1.dat"
+file_out = "../SMC_Chile_visibility_v1.dat"
 
 target = SkyCoord("00:52:44.8 -72:49:43", unit=(u.hourangle, u.deg))
 
