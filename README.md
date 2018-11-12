@@ -1,1 +1,2 @@
-# LSST_SMC
+# LSST SMC Microlensing
+
