@@ -14,7 +14,7 @@ NTT          | 3.6 | La Silla |
 ESO 3.6      | 3.6 | La Silla |
 VST          | 2.6 | Paranal |
 du Pont      | 2.5 | LCO |
-**ANU 2.3**  | 2.4 | **Siding Spring** |
+**ANU 2.3**  | 2.3 | **Siding Spring** |
 MPIA-ESO     | 2.2 | La Silla |
 Jorge Sahade | 2.1 | Leoncito Astronomical Complex | same longitude as Chile
 **Faulkes S**| 2.0 | **Siding Spring** |
