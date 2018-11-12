@@ -1,5 +1,6 @@
 import numpy as np
 import math
+import os
 
 import MulensModel as MM
 
@@ -67,9 +68,6 @@ class UlensLSST(object):
         self._detection_time = None
         self._detected = None
         self._follow_up = None
-
-        file_name = "../data/SMC_Chile_visibility_v1.dat"
-        self._visibility = np.loadtxt(file_name, unpack=True, usecols=(0))
 
     def _LSST_uncertainties(self, mag, five_sigma_mag, band):
         """
@@ -193,31 +191,8 @@ class UlensLSST(object):
         """
         Add follow-up from Chilean observatories
         """
-        requested_cadence = 1./24 # i.e. 1 hr
-        minimum_dt = 0.5 * requested_cadence
-        
-        visible = self._visibility[self._visibility > self._detection_time]
-        visible_night_begin = visible.astype(int) 
-        # This gives begin of night, because day fractions are in range (0.49, 0.94).
-
-        unique_nights = np.unique(visible_night_begin)
-        
-        jds_all_nights = []
-        for night in unique_nights:
-            mask = (visible_night_begin == night)
-            night_jds = visible[mask]
-
-            dt = np.max(night_jds) - np.min(night_jds)
-            if dt < minimum_dt:
-                continue
-
-            # Below we optimaly place observations in given night.
-            n_obs = int(dt/requested_cadence) + 1
-            time_diff = dt - (n_obs - 1) * requested_cadence
-            first_jd = night_jds[0] + time_diff / 2.
-            requested_jds = first_jd + requested_cadence * np.arange(n_obs)
-            
-            jds = [utils.find_nearest_value(night_jds, jd) for jd in requested_jds]
-            jds_all_nights.extend(jds)
-            
-            #print(*jds)
+        #x = os.path.abspath(__file__)
+        #for i in range(3):
+        #    x=os.path.dirname(x)
+        #x=os.path.join(x, 'data', 'baseline2018a_followup_epochs_v1.dat') 
+        #visible = self._visibility[self._visibility > self._detection_time]
