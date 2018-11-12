@@ -194,5 +194,5 @@ class UlensLSST(object):
         #x = os.path.abspath(__file__)
         #for i in range(3):
         #    x=os.path.dirname(x)
-        #x=os.path.join(x, 'data', 'baseline2018a_followup_epochs_v1.dat') 
+        #x=os.path.join(x, 'data', 'baseline2018a_followup_epochs_v1.dat')
         #visible = self._visibility[self._visibility > self._detection_time]
