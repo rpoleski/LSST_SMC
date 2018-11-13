@@ -10,6 +10,7 @@ from ulens_lsst_smc import utils
 
 file_vis = sys.argv[1]
 file_LSST_epochs = sys.argv[2]
+file_LSST_5sigma = sys.argv[3]
 
 requested_cadence = 1. / 24 # i.e. 1 hr
 minimum_dt = 0.5 * requested_cadence 
@@ -45,7 +46,11 @@ for night in unique_nights:
 LSST_epochs = np.loadtxt(file_LSST_epochs, unpack=True, usecols=(0))
 LSST_epochs += 2400000.5
 
+(LSST_5sigma_time, LSST_5sigma_value) = np.loadtxt(
+        file_LSST_5sigma , unpack=True, usecols=(0, 1))
+LSST_5sigma_time += 2400000.5
+
 for jd in jds_all_nights:
     if np.any((LSST_epochs < jd + max_diff) & (LSST_epochs > jd - max_diff)):
-        print("{:.5f}".format(jd))
-
+        index = utils.find_index_of_nearest_value(LSST_5sigma_time, jd)
+        print("{:.5f} {:.3f}".format(jd, LSST_5sigma_value[index]))
