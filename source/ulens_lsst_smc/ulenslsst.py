@@ -1,6 +1,7 @@
 import numpy as np
 import math
 import os
+import scipy.optimize as op
 
 import MulensModel as MM
 
@@ -58,17 +59,20 @@ class UlensLSST(object):
 
         if coords is None:
             coords = "00:52:44.8 -72:49:43"
-        self._model = MM.Model(parameters, coords=coords)
+        self._parameters = parameters
+        self._model = MM.Model(self._parameters, coords=coords)
 
         self.bands = ['u', 'g', 'r', 'i', 'z', 'y'] # XXX - CHECK THAT
         self._simulated_flux = {b: None for b in self.bands}
         self._sigma_flux = {b: None for b in self.bands}
         self._binary_chi2 = {b: None for b in self.bands}
+        self._binary_chi2_sum = 0.
 
         self.detection_time = None
         self.detection_band = None
         self._detected = None
         self._follow_up = None
+        self._event_LSST_PSPL = None
 
         temp = os.path.abspath(__file__)
         for i in range(3):
@@ -133,6 +137,8 @@ class UlensLSST(object):
             diff = (model_flux - simulated) / sigma_flux
             self._binary_chi2[band] = diff**2
 
+        self._binary_chi2_sum += np.sum(self._binary_chi2[band])
+
         return (simulated, sigma_flux)
 
     def _get_detection_date_band(self, times, flux):
@@ -186,6 +192,68 @@ class UlensLSST(object):
                 self.detection_time = date
                 self.detection_band = band
                 self._detected = True
+
+    def _set_event_LSST_PSPL(self):
+        """
+        Sets internal variable to MulensModel.Event instance
+        that uses PSPL model.
+        """
+        datasets = []
+        for band in self.bands:
+            mask = (self._filter == band)
+            if not np.any(mask):
+                continue
+            times = self._JD[mask]
+            flux = self._simulated_flux[band]
+            sigma_flux = self._sigma_flux[band]
+            data = MM.MulensData([times, flux, sigma_flux], phot_fmt='flux',
+                bandpass=band)
+            datasets.append(data)
+
+        model = MM.Model({p: self._parameters[p] for p in ['t_0', 'u_0', 't_E']})
+        self._event_LSST_PSPL = MM.Event(datasets, model)
+
+    def _fit_point_lens_LSST(self):
+        """
+        fits point lens model to simulated LSST data
+        """
+
+        def chi2_fun(theta, event, parameters_to_fit):
+            """
+            for a given event set attributes from parameters_to_fit
+            (list of str) to values from theta list
+            """
+            for (key, val) in enumerate(parameters_to_fit):
+                setattr(event.model.parameters, val, theta[key])
+            chi2 = event.get_chi2()
+            if chi2 < chi2_fun.best_chi2:
+                chi2_fun.best_chi2 = chi2
+            return chi2
+        chi2_fun.best_chi2 = 1.e10
+
+        def jacobian(theta, event, parameters_to_fit):
+            """
+            Calculate chi^2 gradient (also called Jacobian).
+            """
+            for (key, val) in enumerate(parameters_to_fit):
+                setattr(event.model.parameters, val, theta[key])
+            return event.chi2_gradient(parameters_to_fit)
+
+        if self._event_LSST_PSPL is None:
+            self._set_event_LSST_PSPL()
+
+        parameters_to_fit = ["t_0", "u_0", "t_E"]
+        initial_guess = [self._parameters[p] for p in parameters_to_fit]
+
+        result = op.minimize(
+            chi2_fun, x0=initial_guess,
+            args=(self._event_LSST_PSPL, parameters_to_fit),
+            method='Newton-CG', jac=jacobian, tol=3.e-4)
+
+        self._LSST_PSPL_chi2 = chi2_fun.best_chi2
+
+        #print("PSPL chi2:", self._LSST_PSPL_chi2)
+        #print("PSBL chi2:", self._binary_chi2_sum)
 
     def add_follow_up(self):
         """
