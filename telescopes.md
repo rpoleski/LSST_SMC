@@ -1,3 +1,5 @@
+List of telescopes that can be used for follow-up, i.e., must be far enough South.
+
 **Boldface for telescopes outside Chile**
 
 telescope | aperture | observatory | comments

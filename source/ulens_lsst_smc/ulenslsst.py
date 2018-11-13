@@ -69,6 +69,14 @@ class UlensLSST(object):
         self._detected = None
         self._follow_up = None
 
+        temp = os.path.abspath(__file__)
+        for i in range(3):
+            temp = os.path.dirname(temp)
+        self._Chilean_follow_up_epochs_file = os.path.join(
+            temp, 'data', 'baseline2018a_followup_epochs_v1.dat')
+        # XXX this file could be changed by user option
+        # XXX there should be lazy-loading for this file and it also should be class variable.
+
     def _LSST_uncertainties(self, mag, five_sigma_mag, band):
         """
         Calculate LSST photometric uncertainties. Uses
@@ -191,8 +199,4 @@ class UlensLSST(object):
         """
         Add follow-up from Chilean observatories
         """
-        #x = os.path.abspath(__file__)
-        #for i in range(3):
-        #    x=os.path.dirname(x)
-        #x=os.path.join(x, 'data', 'baseline2018a_followup_epochs_v1.dat')
         #visible = self._visibility[self._visibility > self._detection_time]

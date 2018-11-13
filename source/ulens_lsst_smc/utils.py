@@ -4,6 +4,8 @@ import configparser
 
 # Contains:
 #  get_dicts_from_file()
+#  find_nearest_value()
+#  find_index_of_nearest_value()
 
 def get_dicts_from_file(file_name):
     """

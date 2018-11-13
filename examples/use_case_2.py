@@ -16,7 +16,7 @@ full_JD = opsim_data[0] + 2400000.5 # OpSim data are in MJD
 filters = np.array([t.decode('UTF-8') for t in opsim_data[2]])
 opsim_data = [full_JD, opsim_data[1], filters]
 
-dicts = get_dicts_from_file(parameters_file) # This also has to be written.
+dicts = get_dicts_from_file(parameters_file)
 parameters = dicts[0]
 f_source = dicts[1]
 f_blend = dicts[2]
