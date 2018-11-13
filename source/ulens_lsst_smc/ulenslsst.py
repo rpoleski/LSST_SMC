@@ -32,16 +32,22 @@ class UlensLSST(object):
         coords: *str* or *MM.Coordinates*, optional
             Event coordinates. SMC center is assumed if not provided.
 
-        follow_up_file: *str*, optional
+        follow_up_file_1: *str*, optional
             Name of a 2-column file with MJD and 5 sigma depth
             (which will be degraded). If not provided, then it defaults
-            to baseline2018a file.
+            to baseline2018a file. This is used to simulate Chilean follow-up.
+
+        follow_up_file_2: *str*, optional
+            Name of a 2-column file with MJD and 5 sigma depth
+            (which will be degraded). If not provided, then it defaults
+            to baseline2018a file (different from the one above).
+            This is used to simulate non-Chilean follow-up.
 
     Attributes :
     """
 
     def __init__(self, opsim_data, parameters, source_flux, blending_flux,
-                 coords=None, follow_up_file=None):
+                 coords=None, follow_up_file_1=None, follow_up_file_2=None):
         if not isinstance(opsim_data, list):
             raise TypeError('opsim_data has to be a list')
         if len(opsim_data) != 3:
@@ -78,9 +84,10 @@ class UlensLSST(object):
         self._follow_up = None
         self._event_PSPL = None
         self._follow_up_Chilean = None
+        self._follow_up_nonChilean = None
 
-        if follow_up_file is not None:
-            self._Chilean_follow_up_file = follow_up_file
+        if follow_up_file_1 is not None:
+            self._Chilean_follow_up_file = follow_up_file_1
         else:
             temp = os.path.abspath(__file__)
             for i in range(3):
@@ -89,6 +96,16 @@ class UlensLSST(object):
                     temp, 'data', 'baseline2018a_followup_epochs_v1.dat')
         self._Chilean_follow_up_data = None
         # XXX there should be lazy-loading for this file and it also should be class variable.
+
+        if follow_up_file_2 is not None:
+            self._nonChilean_follow_up_file = follow_up_file_2
+        else:
+            temp = os.path.abspath(__file__)
+            for i in range(3):
+                temp = os.path.dirname(temp)
+            self._nonChilean_follow_up_file = os.path.join(
+                    temp, 'data', 'baseline2018a_followup_epochs_v2.dat')
+        self._nonChilean_follow_up_data = None
 
     def _LSST_uncertainties(self, mag, five_sigma_mag, band):
         """
@@ -221,6 +238,9 @@ class UlensLSST(object):
         if self._follow_up_Chilean is not None:
             datasets.append(self._follow_up_Chilean)
 
+        if self._follow_up_nonChilean is not None:
+            datasets.append(self._follow_up_nonChilean)
+
         model = MM.Model({p: self._parameters[p] for p in ['t_0', 'u_0', 't_E']})
         self._event_PSPL = MM.Event(datasets, model)
 
@@ -273,10 +293,10 @@ class UlensLSST(object):
         if self._detected is not True:
             return
 
-        self._add_follow_up_Chile()
-        #self._add_follow_up_outside_Chile() # XXX
+        self._add_follow_up_Chilean()
+        self._add_follow_up_nonChilean()
 
-    def _add_follow_up_Chile(self):
+    def _add_follow_up_Chilean(self):
         """
         Add follow-up from Chilean observatories
         """
@@ -290,7 +310,7 @@ class UlensLSST(object):
             temp = np.loadtxt(self._Chilean_follow_up_file, unpack=True)
             self._Chilean_follow_up_data = {
                 'jd': temp[0],
-                '5sigma_depth': temp[1] - d_5sigma}
+                '5sigma_depth': temp[1]}
 
         start = self.detection_time + dt_shift
         stop = self._parameters['t_0'] + t_E_factor * self._parameters['t_E']
@@ -299,8 +319,39 @@ class UlensLSST(object):
         times = self._Chilean_follow_up_data['jd'][mask]
 
         sim = self._simulate_flux(
-                    times, self._Chilean_follow_up_data['5sigma_depth'][mask],
+                    times,
+                    self._Chilean_follow_up_data['5sigma_depth'][mask] - d_5sigma,
                     band)
 
         self._follow_up_Chilean = MM.MulensData([times, sim[0], sim[1]],
+                phot_fmt='flux', bandpass=band)
+
+    def _add_follow_up_nonChilean(self):
+        """
+        Add follow-up from observatories that are outside Chile.
+        """
+        band = 'i'
+        d_5sigma = 0.8 # This degrades LSST accuracy. It should be 1.17 for
+        # a 2.5-m telescope - see Ivezic+ 0805.2366v5 footnote 16.
+        dt_shift = 0.5 # Follow-up starts half a day after detection.
+        t_E_factor = 3. # How many t_E after t_0 we stop follow-up?
+
+        if self._nonChilean_follow_up_data is None:
+            temp = np.loadtxt(self._nonChilean_follow_up_file, unpack=True)
+            self._nonChilean_follow_up_data = {
+                'jd': temp[0],
+                '5sigma_depth': temp[1]}
+
+        start = self.detection_time + dt_shift
+        stop = self._parameters['t_0'] + t_E_factor * self._parameters['t_E']
+        mask = (self._nonChilean_follow_up_data['jd'] > start)
+        mask *= (self._nonChilean_follow_up_data['jd'] < stop)
+        times = self._nonChilean_follow_up_data['jd'][mask]
+
+        sim = self._simulate_flux(
+                    times,
+                    self._nonChilean_follow_up_data['5sigma_depth'][mask] - d_5sigma,
+                    band)
+
+        self._follow_up_nonChilean = MM.MulensData([times, sim[0], sim[1]],
                 phot_fmt='flux', bandpass=band)

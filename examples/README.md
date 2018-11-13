@@ -41,3 +41,10 @@ python plan_observations.py ../data/SMC_Chile_visibility_v1.dat baseline2018a_al
 python plan_observations.py ../data/SMC_Chile_visibility_v1.dat colossus_2664_all_epochs_extended.dat ../data/colossus_2664_i_band_near_SMC_5sig.dat > ../data/colossus_2664_followup_epochs_v1.dat
 ```
 
+Simulate non-Chilean follow-up:
+```tcsh
+foreach id ( baseline2018a colossus_2664 )
+python plan_other_observations.py ../data/{$id}_followup_epochs_v1.dat > ../data/{$id}_followup_epochs_v2.dat
+end
+```
+
