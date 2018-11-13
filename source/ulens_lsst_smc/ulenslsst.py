@@ -32,11 +32,16 @@ class UlensLSST(object):
         coords: *str* or *MM.Coordinates*, optional
             Event coordinates. SMC center is assumed if not provided.
 
+        follow_up_file: *str*, optional
+            Name of a 2-column file with MJD and 5 sigma depth
+            (which will be degraded). If not provided, then it defaults
+            to baseline2018a file.
+
     Attributes :
     """
 
     def __init__(self, opsim_data, parameters, source_flux, blending_flux,
-                 coords=None):
+                 coords=None, follow_up_file=None):
         if not isinstance(opsim_data, list):
             raise TypeError('opsim_data has to be a list')
         if len(opsim_data) != 3:
@@ -65,21 +70,24 @@ class UlensLSST(object):
         self.bands = ['u', 'g', 'r', 'i', 'z', 'y'] # XXX - CHECK THAT
         self._simulated_flux = {b: None for b in self.bands}
         self._sigma_flux = {b: None for b in self.bands}
-        self._binary_chi2 = {b: None for b in self.bands}
         self._binary_chi2_sum = 0.
 
         self.detection_time = None
         self.detection_band = None
         self._detected = None
         self._follow_up = None
-        self._event_LSST_PSPL = None
+        self._event_PSPL = None
+        self._follow_up_Chilean = None
 
-        temp = os.path.abspath(__file__)
-        for i in range(3):
-            temp = os.path.dirname(temp)
-        self._Chilean_follow_up_epochs_file = os.path.join(
-            temp, 'data', 'baseline2018a_followup_epochs_v1.dat')
-        # XXX this file could be changed by user option
+        if follow_up_file is not None:
+            self._Chilean_follow_up_file = follow_up_file
+        else:
+            temp = os.path.abspath(__file__)
+            for i in range(3):
+                temp = os.path.dirname(temp)
+            self._Chilean_follow_up_file = os.path.join(
+                    temp, 'data', 'baseline2018a_followup_epochs_v1.dat')
+        self._Chilean_follow_up_data = None
         # XXX there should be lazy-loading for this file and it also should be class variable.
 
     def _LSST_uncertainties(self, mag, five_sigma_mag, band):
@@ -109,6 +117,8 @@ class UlensLSST(object):
             t_1 = params.t_0 - factor * params.t_E
             t_2 = params.t_0 + factor * params.t_E
             self._model.set_magnification_methods([t_1, 'VBBL', t_2])
+            self._model.set_default_magnification_method(
+                'point_source_point_lens')
 
         magnification = self._model.magnification(times)
         return magnification
@@ -135,9 +145,7 @@ class UlensLSST(object):
         
         if self._model.n_lenses == 2:
             diff = (model_flux - simulated) / sigma_flux
-            self._binary_chi2[band] = diff**2
-
-        self._binary_chi2_sum += np.sum(self._binary_chi2[band])
+            self._binary_chi2_sum += np.sum(diff**2)
 
         return (simulated, sigma_flux)
 
@@ -193,7 +201,7 @@ class UlensLSST(object):
                 self.detection_band = band
                 self._detected = True
 
-    def _set_event_LSST_PSPL(self):
+    def _set_event_PSPL(self):
         """
         Sets internal variable to MulensModel.Event instance
         that uses PSPL model.
@@ -210,12 +218,15 @@ class UlensLSST(object):
                 bandpass=band)
             datasets.append(data)
 
-        model = MM.Model({p: self._parameters[p] for p in ['t_0', 'u_0', 't_E']})
-        self._event_LSST_PSPL = MM.Event(datasets, model)
+        if self._follow_up_Chilean is not None:
+            datasets.append(self._follow_up_Chilean)
 
-    def _fit_point_lens_LSST(self):
+        model = MM.Model({p: self._parameters[p] for p in ['t_0', 'u_0', 't_E']})
+        self._event_PSPL = MM.Event(datasets, model)
+
+    def _fit_point_lens(self):
         """
-        fits point lens model to simulated LSST data
+        fits point lens model to simulated data
         """
 
         def chi2_fun(theta, event, parameters_to_fit):
@@ -239,15 +250,15 @@ class UlensLSST(object):
                 setattr(event.model.parameters, val, theta[key])
             return event.chi2_gradient(parameters_to_fit)
 
-        if self._event_LSST_PSPL is None:
-            self._set_event_LSST_PSPL()
+        if self._event_PSPL is None:
+            self._set_event_PSPL()
 
         parameters_to_fit = ["t_0", "u_0", "t_E"]
         initial_guess = [self._parameters[p] for p in parameters_to_fit]
 
         result = op.minimize(
             chi2_fun, x0=initial_guess,
-            args=(self._event_LSST_PSPL, parameters_to_fit),
+            args=(self._event_PSPL, parameters_to_fit),
             method='Newton-CG', jac=jacobian, tol=3.e-4)
 
         self._LSST_PSPL_chi2 = chi2_fun.best_chi2
@@ -269,4 +280,27 @@ class UlensLSST(object):
         """
         Add follow-up from Chilean observatories
         """
-        #visible = self._visibility[self._visibility > self.detection_time]
+        band = 'i'
+        d_5sigma = 0.8 # This degrades LSST accuracy. It should be 1.17 for
+        # a 2.5-m telescope - see Ivezic+ 0805.2366v5 footnote 16.
+        dt_shift = 0.5 # Follow-up starts half a day after detection.
+        t_E_factor = 3. # How many t_E after t_0 we stop follow-up?
+
+        if self._Chilean_follow_up_data is None:
+            temp = np.loadtxt(self._Chilean_follow_up_file, unpack=True)
+            self._Chilean_follow_up_data = {
+                'jd': temp[0],
+                '5sigma_depth': temp[1] - d_5sigma}
+
+        start = self.detection_time + dt_shift
+        stop = self._parameters['t_0'] + t_E_factor * self._parameters['t_E']
+        mask = (self._Chilean_follow_up_data['jd'] > start)
+        mask *= (self._Chilean_follow_up_data['jd'] < stop)
+        times = self._Chilean_follow_up_data['jd'][mask]
+
+        sim = self._simulate_flux(
+                    times, self._Chilean_follow_up_data['5sigma_depth'][mask],
+                    band)
+
+        self._follow_up_Chilean = MM.MulensData([times, sim[0], sim[1]],
+                phot_fmt='flux', bandpass=band)

@@ -25,10 +25,8 @@ ulens = UlensLSST(opsim_data, parameters, f_source, f_blend)
 
 ulens.find_detection_time()
 print("Event detection:")
-print(ulens.detection_time)
-print(ulens.detection_band)
-
-ulens._fit_point_lens_LSST()
+print(ulens.detection_time, ulens.detection_band)
 
 ulens.add_follow_up()
 
+ulens._fit_point_lens()
