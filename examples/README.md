@@ -7,6 +7,8 @@ rm -rf out_01/
 python extend_epochs.py baseline2018a_all_epochs.dat baseline2018a_all_epochs_extended.dat
 ```
 
+The file ```out_01/out_01.npz``` is huge, so we remove it as soon as we used it.
+
 Similar is run for ```colossus_2664```. 
 
 Then:
@@ -25,13 +27,17 @@ To get the 5 sigma limits, I'm extracting all i band epochs from following field
 * 25.15984 -74.83162
 * 26.81115 -72.09968
 
-This goes to ```../data/baseline2018a_i_band_near_SMC_5sig.dat```
+This goes to 
+
+```
+../data/baseline2018a_i_band_near_SMC_5sig.dat
+../data/colossus_2664_i_band_near_SMC_5sig.dat
+```
 
 Now we can prepare epochs of follow-up observations:
 
 ```bash
 python plan_observations.py ../data/SMC_Chile_visibility_v1.dat baseline2018a_all_epochs_extended.dat ../data/baseline2018a_i_band_near_SMC_5sig.dat > ../data/baseline2018a_followup_epochs_v1.dat
+python plan_observations.py ../data/SMC_Chile_visibility_v1.dat colossus_2664_all_epochs_extended.dat ../data/colossus_2664_i_band_near_SMC_5sig.dat > ../data/colossus_2664_followup_epochs_v1.dat
 ```
-__colossus_2664 has to be done now__
-
 
