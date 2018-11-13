@@ -24,7 +24,7 @@ f_blend = dicts[2]
 ulens = UlensLSST(opsim_data, parameters, f_source, f_blend)
 
 ulens.find_detection_time()
-print(ulens._detection_time)
+print(ulens.detection_time)
 
 ulens.add_follow_up()
 

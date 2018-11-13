@@ -65,7 +65,7 @@ class UlensLSST(object):
         self._sigma_flux = {b: None for b in self.bands}
         self._binary_chi2 = {b: None for b in self.bands}
 
-        self._detection_time = None
+        self.detection_time = None
         self._detected = None
         self._follow_up = None
 
@@ -123,7 +123,8 @@ class UlensLSST(object):
         model_flux = source_flux * magnification + blending_flux
         model_mag = MM.Utils.get_mag_from_flux(model_flux)
         sigma_mag = self._LSST_uncertainties(model_mag, five_sigma_mag, band)
-        sigma_flux = MM.Utils.get_flux_and_err_from_mag(model_mag, sigma_mag)[1]
+        temp = MM.Utils.get_flux_and_err_from_mag(model_mag, sigma_mag)
+        sigma_flux = temp[1]
         
         simulated = model_flux + np.random.normal(scale=sigma_flux)
         
@@ -166,7 +167,8 @@ class UlensLSST(object):
         dates = []
         for band in self.bands:
             mask = (self._filter == band)
-            # XXX if not np.any(mask) - give warning?
+            if not np.any(mask):
+                continue
             times = self._JD[mask]
             five_sigma_mag = self._5_sigma_detection[mask]
             if self._simulated_flux[band] is None:
@@ -174,15 +176,16 @@ class UlensLSST(object):
                 self._simulated_flux[band] = sim[0]
                 self._sigma_flux[band] = sim[1]
 
-            date = self._get_detection_date_band(times, self._simulated_flux[band])
+            date = self._get_detection_date_band(
+                    times, self._simulated_flux[band])
             if date is not None:
                 dates.append(date)
 
         if len(dates) == 0:
-            self._detection_time = None
+            self.detection_time = None
             self._detected = False
         else:
-            self._detection_time = min(dates)
+            self.detection_time = min(dates)
             self._detected = True
 
     def add_follow_up(self):
@@ -199,4 +202,4 @@ class UlensLSST(object):
         """
         Add follow-up from Chilean observatories
         """
-        #visible = self._visibility[self._visibility > self._detection_time]
+        #visible = self._visibility[self._visibility > self.detection_time]

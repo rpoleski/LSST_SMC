@@ -9,7 +9,7 @@ import configparser
 
 def get_dicts_from_file(file_name):
     """
-    XXX
+    Read 3 dicts from config file. The values in dicts are floats.
     """
     config = configparser.ConfigParser()
     config.optionxform = str
@@ -37,13 +37,14 @@ def get_dicts_from_file(file_name):
 
 def find_nearest_value(array, value):
     """
-    XXX
+    Take a np.ndarray and find the element that is closeset to given value.
     """
     index = find_index_of_nearest_value(array, value)
     return array[index]
 
 def find_index_of_nearest_value(array, value):
     """
-    XXX
+    In a np.ndarray find an index of element
+    that is closest to the given value.
     """
     return (np.abs(array - value)).argmin()
