@@ -66,6 +66,7 @@ class UlensLSST(object):
         self._binary_chi2 = {b: None for b in self.bands}
 
         self.detection_time = None
+        self.detection_band = None
         self._detected = None
         self._follow_up = None
 
@@ -164,7 +165,8 @@ class UlensLSST(object):
         Find detection date based on each band.
         Returns None if event is not detected at all.
         """
-        dates = []
+        self._detected = False
+
         for band in self.bands:
             mask = (self._filter == band)
             if not np.any(mask):
@@ -178,15 +180,12 @@ class UlensLSST(object):
 
             date = self._get_detection_date_band(
                     times, self._simulated_flux[band])
-            if date is not None:
-                dates.append(date)
-
-        if len(dates) == 0:
-            self.detection_time = None
-            self._detected = False
-        else:
-            self.detection_time = min(dates)
-            self._detected = True
+            if date is None:
+                continue
+            if (self.detection_time is None) or (date < self.detection_time):
+                self.detection_time = date
+                self.detection_band = band
+                self._detected = True
 
     def add_follow_up(self):
         """
