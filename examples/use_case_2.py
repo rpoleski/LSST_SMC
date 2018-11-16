@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 from ulens_lsst_smc.ulenslsst import UlensLSST
 from ulens_lsst_smc.utils import get_dicts_from_file
@@ -29,4 +30,8 @@ print(ulens.detection_time, ulens.detection_band)
 
 ulens.add_follow_up()
 
+# XXX make something public:
 ulens._fit_point_lens()
+
+ulens.plot_data()
+plt.show()

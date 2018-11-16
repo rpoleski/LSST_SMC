@@ -2,6 +2,7 @@ import numpy as np
 import math
 import os
 import scipy.optimize as op
+import matplotlib.pyplot as plt
 
 import MulensModel as MM
 
@@ -231,8 +232,9 @@ class UlensLSST(object):
             times = self._JD[mask]
             flux = self._simulated_flux[band]
             sigma_flux = self._sigma_flux[band]
+            plot = {}
             data = MM.MulensData([times, flux, sigma_flux], phot_fmt='flux',
-                bandpass=band)
+                bandpass=band, plot_properties={'label': 'LSST '+band})
             datasets.append(data)
 
         if self._follow_up_Chilean is not None:
@@ -324,7 +326,8 @@ class UlensLSST(object):
                     band)
 
         self._follow_up_Chilean = MM.MulensData([times, sim[0], sim[1]],
-                phot_fmt='flux', bandpass=band)
+                phot_fmt='flux', bandpass=band,
+                plot_properties={"label": "follow-up i"})
 
     def _add_follow_up_nonChilean(self):
         """
@@ -354,4 +357,12 @@ class UlensLSST(object):
                     band)
 
         self._follow_up_nonChilean = MM.MulensData([times, sim[0], sim[1]],
-                phot_fmt='flux', bandpass=band)
+                phot_fmt='flux', bandpass=band,
+                plot_properties={"label": "follow-up i"})
+
+    def plot_data(self):
+        """
+        Plot simulated data. Use plt.savefig() or plt.show() afterwards.
+        """
+        self._event_PSPL.plot_data()
+        plt.legend()
