@@ -2,6 +2,14 @@
 *.py~
 *.swp
 
+# latex auxiliary files:
+*.dvi
+*.blg
+*.bbl
+*.aux
+SMC_LSST.out
+SMC_LSST.log
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
