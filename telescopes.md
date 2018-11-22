@@ -23,6 +23,7 @@ Jorge Sahade | 2.1 | Leoncito Astronomical Complex | same longitude as Chile
 **LCOGT Siding Spring**| 2.0 | **Siding Spring** |
 **Radcliffe**| 1.9 | **SAAO** |
 **74"**      | 1.9 | **Mount Stromlo** |
+**MOA**      | 1.8 | **Mount John** |
 VLT Auxiliary| 1.8 | Paranal |
 **Perkin Elmer** | 1.6 | **Pico dos Dias Observatory** | microFun - Leonardo Almeida & Francisco Jablonski
 **KMT SAAO** | 1.6 | **SAAO** | 
@@ -34,5 +35,5 @@ HPT          | 1.5 | Cerro Armazones |
 Coude Auxiliary Telescope | 1.4 | La Silla | 
 **SkyMapper**| 1.3 | **Siding Spring** |
 
-The list may be incomplete for <2.0m.
+The list may be incomplete for <2.0m, in particular for Chilean telescopes.
 
