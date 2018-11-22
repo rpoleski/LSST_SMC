@@ -48,3 +48,23 @@ def find_index_of_nearest_value(array, value):
     that is closest to the given value.
     """
     return (np.abs(array - value)).argmin()
+
+def xyz_to_ra_dec(x, y, z):
+    """
+    Transforming Cartesian coordinates to equatorial coordinates
+    """
+    deg = np.pi/180.0
+    ra_0 = 16.25*deg # SMC center
+    dec_0 = -72.42*deg # SMC center
+    # Heliocentric distance:
+    dist = np.sqrt(x**2+y**2+z**2)
+    # Calculating equatorial coordinates
+    sindec = (y/dist)*np.cos(dec_0)+(z/dist)*np.sin(dec_0)
+    dec = np.arcsin(sindec)
+    sinalfcosdec = -x/dist
+    cosalfcosdec = -(y/dist)*np.sin(dec_0)+(z/dist)*np.cos(dec_0)
+    alf = np.arctan2(sinalfcosdec,cosalfcosdec)+ra_0
+    # radians to hours/degrees
+    dec /= deg
+    alf *= 12.0/np.pi
+    return alf,dec,dist
