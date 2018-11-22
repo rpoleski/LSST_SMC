@@ -30,8 +30,9 @@ print(ulens.detection_time, ulens.detection_band)
 
 ulens.add_follow_up()
 
-# XXX make something public:
-ulens._fit_point_lens()
+print("Delta chi2 for binary lens:")
+print(ulens.delta_chi2_BL_PL)
 
 ulens.plot_data()
 plt.show()
+

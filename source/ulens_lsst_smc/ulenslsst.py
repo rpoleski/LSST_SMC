@@ -78,6 +78,7 @@ class UlensLSST(object):
         self._simulated_flux = {b: None for b in self.bands}
         self._sigma_flux = {b: None for b in self.bands}
         self._binary_chi2_sum = 0.
+        self._LSST_PSPL_chi2 = None
 
         self.detection_time = None
         self.detection_band = None
@@ -327,7 +328,7 @@ class UlensLSST(object):
 
         self._follow_up_Chilean = MM.MulensData([times, sim[0], sim[1]],
                 phot_fmt='flux', bandpass=band,
-                plot_properties={"label": "follow-up i"})
+                plot_properties={"label": "follow-up i", "zorder": -1000})
 
     def _add_follow_up_nonChilean(self):
         """
@@ -360,9 +361,25 @@ class UlensLSST(object):
                 phot_fmt='flux', bandpass=band,
                 plot_properties={"label": "follow-up i"})
 
+    @property
+    def delta_chi2_BL_PL(self):
+        """
+        Delta chi2 between point source and binary lens models.
+
+        Returns None for single lens models.
+        """
+        if self._model.n_lenses == 1:
+            return None
+
+        if self._LSST_PSPL_chi2 is None:
+            self._fit_point_lens()
+
+        return self._LSST_PSPL_chi2 - self._binary_chi2_sum
+
     def plot_data(self):
         """
         Plot simulated data. Use plt.savefig() or plt.show() afterwards.
         """
         self._event_PSPL.plot_data()
+        self._event_PSPL.plot_model()
         plt.legend()
