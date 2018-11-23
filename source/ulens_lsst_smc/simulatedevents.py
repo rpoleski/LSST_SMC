@@ -42,8 +42,8 @@ class SimulatedEvents(object):
         self.dec = None
         self.dist = None
 
-        self.survey_begin = 2459853.
-        self.survey_ends = 2463505.
+        self.survey_start = 2459853.
+        self.survey_stop = 2463505.
 
     def _read_isochrone(self, file_name):
         """
@@ -84,7 +84,7 @@ class SimulatedEvents(object):
         """
         Generates t_0 and u_0
         """
-        self.t_0 = np.random.uniform(self.survey_begin, self.survey_ends,
+        self.t_0 = np.random.uniform(self.survey_start, self.survey_stop,
                                      self.n_samples)
         self.u_0 = np.random.uniform(-1., 1., self.n_samples)
 
