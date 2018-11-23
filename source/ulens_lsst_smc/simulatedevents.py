@@ -3,6 +3,7 @@ import pickle
 
 from ulens_lsst_smc import utils
 
+
 class SimulatedEvents(object):
     """
     Simulated microlensing events.
@@ -35,11 +36,14 @@ class SimulatedEvents(object):
             self._GMM_young = pickle.load(file_, encoding='latin1')
 
         self.frac_young = 0.4
-        self.n_samples = 10
+        self.n_samples = 1000
         self._flag = None
         self.ra = None
         self.dec = None
         self.dist = None
+
+        self.survey_begin = 2459853.
+        self.survey_ends = 2463505.
 
     def _read_isochrone(self, file_name):
         """
@@ -69,4 +73,20 @@ class SimulatedEvents(object):
         self.ra = np.concatenate( (ra_yng, ra_old) )
         self.dec = np.concatenate( (dec_yng, dec_old) )
         self.dist = np.concatenate( (dist_yng, dist_old) )
+
+    def generate_fluxes(self):
+        """XXX"""
+        pass
+
+    def generate_microlensing_parameteres(self):
+        """
+        Generates t_0 and u_0
+        """
+        self.t_0 = np.random.uniform(self.survey_begin, self.survey_ends,
+                                     self.n_samples)
+        self.u_0 = np.random.uniform(-1., 1., self.n_samples)
+
+    def add_planets(self):
+        """XXX"""
+        pass
 
