@@ -49,11 +49,13 @@ class SimulatedEvents(object):
         """
         Reads isochrone file
         """
-        use_cols = (2,23,24,25,26,27,28)
+        use_cols = (2, 23, 24, 25, 26, 27, 28, 4, 5)
         data = np.loadtxt(file_name, unpack=True, usecols=use_cols)
         out = {'M_initial': data[0]}
         for (i, band) in enumerate(['u', 'g', 'r', 'i', 'z', 'Y']):
-            out[band] = data[i]
+            out[band] = data[i+1]
+        out['radius'] = 10**(.5*data[7] - 2.*(data[8]-3.761))
+        # This is relative to R_Sun. 3.761 is log_10(T_eff_Sun).
         return out
 
     def generate_coords(self):
