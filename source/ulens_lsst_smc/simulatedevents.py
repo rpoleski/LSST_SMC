@@ -10,15 +10,22 @@ class SimulatedEvents(object):
 
     Arguments :
         microlensing_file: 
-            XXX
+            File used to simulate basic parameters.
+            Format not yet specified - XXX.
+
         isochrone_old_file:
-            XXX
+            File with isochrone for _old_ population.
+            Assumes format of PARSEC/CMD.
+
         isochrone_young_file:
-            XXX
+            File with isochrone for _young_ population.
+            Assumes format of PARSEC/CMD.
+
         model_old_file:
-            XXX
+            Pickled file with gaussian mixture model for old population.
+
         model_young_file:
-            XXX
+            Pickled file with gaussian mixture model for young population.
     """
     def __init__(
                 self, microlensing_file,
@@ -60,7 +67,8 @@ class SimulatedEvents(object):
 
     def generate_coords(self):
         """
-        Generates RA, Dec coordinates of events. Sets .ra, .dec. and .dist properties.
+        Generates RA, Dec coordinates of events.
+        Sets .ra, .dec. and .dist properties.
         """
         n_young = int(self.frac_young*self.n_samples) # number of young stars
         n_old = self.n_samples-n_young # number of old stars
@@ -68,10 +76,12 @@ class SimulatedEvents(object):
         self._flag[0:n_young] = 0
         # old stars
         (coords_old, ident_old) = self._GMM_old.sample(n_samples=n_old)
-        (ra_old, dec_old, dist_old) = utils.xyz_to_ra_dec(coords_old[:,0], coords_old[:,1], coords_old[:,2])
+        (ra_old, dec_old, dist_old) = utils.xyz_to_ra_dec(
+                coords_old[:,0], coords_old[:,1], coords_old[:,2])
         # young stars
         (coords_yng, ident_yng) = self._GMM_young.sample(n_samples=n_young)
-        (ra_yng, dec_yng, dist_yng) = utils.xyz_to_ra_dec(coords_yng[:,0],coords_yng[:,1],coords_yng[:,2])
+        (ra_yng, dec_yng, dist_yng) = utils.xyz_to_ra_dec(
+                coords_yng[:,0], coords_yng[:,1], coords_yng[:,2])
         self.ra = np.concatenate( (ra_yng, ra_old) )
         self.dec = np.concatenate( (dec_yng, dec_old) )
         self.dist = np.concatenate( (dist_yng, dist_old) )
@@ -89,6 +99,14 @@ class SimulatedEvents(object):
         self.u_0 = np.random.uniform(-1., 1., self.n_samples)
 
     def add_planets(self):
-        """XXX"""
+        """
+        Add parameters (s, q, alpha). The population of planet is taken from
+        `Suzuki et al. (2016)
+        <http://adsabs.harvard.edu/abs/2016ApJ...833..145S>`_ and
+        `Udalski et al. (2018)
+        <http://adsabs.harvard.edu/abs/2018AcA....68....1U>`_.
+
+        XXX - do we modify it?
+        """
         pass
 
