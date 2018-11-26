@@ -109,6 +109,13 @@ class UlensLSST(object):
                     temp, 'data', 'baseline2018a_followup_epochs_v2.dat')
         self._nonChilean_follow_up_data = None
 
+        self._band_follow_up = 'i'
+        self._d_5sigma = 0.53 # This degrades LSST accuracy. It should be 1.17
+        # for a 2.5-m telescope - see Ivezic+ 0805.2366v5 footnote 16.
+        # We assume a 4-m follow-up telescope.
+        self._dt_shift = 0.5 # Follow-up starts half a day after detection.
+        self._t_E_factor = 3. # How many t_E after t_0 we stop follow-up?
+
     def _LSST_uncertainties(self, mag, five_sigma_mag, band):
         """
         Calculate LSST photometric uncertainties. Uses
@@ -303,63 +310,49 @@ class UlensLSST(object):
         """
         Add follow-up from Chilean observatories
         """
-        band = 'i'
-        d_5sigma = 0.8 # This degrades LSST accuracy. It should be 1.17 for
-        # a 2.5-m telescope - see Ivezic+ 0805.2366v5 footnote 16.
-        dt_shift = 0.5 # Follow-up starts half a day after detection.
-        t_E_factor = 3. # How many t_E after t_0 we stop follow-up?
-
         if self._Chilean_follow_up_data is None:
             temp = np.loadtxt(self._Chilean_follow_up_file, unpack=True)
             self._Chilean_follow_up_data = {
                 'jd': temp[0],
                 '5sigma_depth': temp[1]}
 
-        start = self.detection_time + dt_shift
-        stop = self._parameters['t_0'] + t_E_factor * self._parameters['t_E']
+        start = self.detection_time + self._dt_shift
+        stop = self._parameters['t_0'] + self._t_E_factor * self._parameters['t_E']
         mask = (self._Chilean_follow_up_data['jd'] > start)
         mask *= (self._Chilean_follow_up_data['jd'] < stop)
         times = self._Chilean_follow_up_data['jd'][mask]
 
-        sim = self._simulate_flux(
-                    times,
-                    self._Chilean_follow_up_data['5sigma_depth'][mask] - d_5sigma,
-                    band)
+        mag_5sig = self._Chilean_follow_up_data['5sigma_depth'][mask]
+        mag_5sig -= self._d_5sigma
+        sim = self._simulate_flux(times, mag_5sig, self._band_follow_up)
 
         self._follow_up_Chilean = MM.MulensData([times, sim[0], sim[1]],
-                phot_fmt='flux', bandpass=band,
+                phot_fmt='flux', bandpass=self._band_follow_up,
                 plot_properties={"label": "follow-up i", "zorder": -1000})
 
     def _add_follow_up_nonChilean(self):
         """
         Add follow-up from observatories that are outside Chile.
         """
-        band = 'i'
-        d_5sigma = 0.8 # This degrades LSST accuracy. It should be 1.17 for
-        # a 2.5-m telescope - see Ivezic+ 0805.2366v5 footnote 16.
-        dt_shift = 0.5 # Follow-up starts half a day after detection.
-        t_E_factor = 3. # How many t_E after t_0 we stop follow-up?
-
         if self._nonChilean_follow_up_data is None:
             temp = np.loadtxt(self._nonChilean_follow_up_file, unpack=True)
             self._nonChilean_follow_up_data = {
                 'jd': temp[0],
                 '5sigma_depth': temp[1]}
 
-        start = self.detection_time + dt_shift
-        stop = self._parameters['t_0'] + t_E_factor * self._parameters['t_E']
+        start = self.detection_time + self._dt_shift
+        stop = self._parameters['t_0'] + self._t_E_factor * self._parameters['t_E']
         mask = (self._nonChilean_follow_up_data['jd'] > start)
         mask *= (self._nonChilean_follow_up_data['jd'] < stop)
         times = self._nonChilean_follow_up_data['jd'][mask]
 
-        sim = self._simulate_flux(
-                    times,
-                    self._nonChilean_follow_up_data['5sigma_depth'][mask] - d_5sigma,
-                    band)
+        mag_5sig = self._nonChilean_follow_up_data['5sigma_depth'][mask]
+        mag_5sig -= self._d_5sigma
+        sim = self._simulate_flux(times, mag_5sig, self._band_follow_up)
 
         self._follow_up_nonChilean = MM.MulensData([times, sim[0], sim[1]],
-                phot_fmt='flux', bandpass=band,
-                plot_properties={"label": "follow-up i"})
+                phot_fmt='flux', bandpass=self._band_follow_up,
+                plot_properties={"label": "follow-up i", "zorder": -500})
 
     @property
     def delta_chi2_BL_PL(self):
