@@ -1,0 +1,377 @@
+% Template for white paper submissions for the 
+% LSST Call for Observing Strategies for DeepDrilling and Minisurveys 
+% 
+% The call for white papers can be found at https://github.com/lsst-pst/survey_strategy/blob/master/latex/WPcall2018.pdf
+% The deadline for submissions is November 29, 2018
+% Please submit your white paper via email to lsst-survey-strategy@lists.lsst.org or via a pull request on this repository 
+% (https://github.com/lsst-pst/survey_strategy_wp) after creating a subdirectory named LASTNAME_FIRSTNAME_NUMBER.
+
+% For help with white papers or the submission process, please post at http://community.lsst.org/c/sci/survey-strategy
+
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage[top=1in,bottom=1.5in,left=1in,right=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+\title{Extragalactic Exoplanets -- Higher Cadence Observations of SMC}
+\author{Rados\l{}aw Poleski and Przemek Mr\'oz}
+\date{November 2018}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We propose to increase LSST cadence for the Small Magellanic Cloud (SMC) which will 
+enable finding dozens of microlensing events annually and potentially a few 
+planetary events over the course of the survey.  These would be 
+the first extragalactic exoplanets ever discovered and will give us a unique constraint on 
+the planet formation under different environments.  We discuss what changes in 
+the LSST observing strategy are required.  Presented analysis takes into account 
+an extensive photometric follow-up program. 
+\end{abstract}
+
+\section{White Paper Information}
+Please contact Radek Poleski, \url{poleski.1@osu.edu}, with any questions about this white paper.  % XXX - Przemek
+% Please provide contact information (name and email address) of the appropriate author(s) for this white paper.
+% In addition, please provide the following categorization for your white paper:
+\begin{enumerate} 
+\item {\bf Science Category:} Exploring the Changing Sky
+% which of the four main LSST science themes are addressed? Are there other
+% science programs addressed by this white paper?
+% 
+% Website https://www.lsst.org/science gives 4 science categories, in short: 
+% DM & DE, SS, variable Sky, and MW.
+\item {\bf Survey Type Category:} mini survey
+% please choose one of the following possibilities: the main `wide-fast-deep'
+%   survey, mini survey, Deep Drilling field, Target of Opportunity observation, Other (provide details). 
+\item {\bf Observing Strategy Category:} %please choose one of the following possibilities: 
+%    \begin{itemize} 
+%     \item a specific observing strategy to enable specific time domain science, 
+%	that is relatively agnostic to where the telescope is pointed (e.g., a science case enabled 
+%	by relatively deep precise time-resolved multi-color photometry). 
+%     \item a specific pointing or set of pointings that is (relatively) agnostic of the detailed observing 
+%	strategy or cadence, (e.g., a science case enabled by very deep precise multi-color 
+%	photometry)
+%      \item an integrated program with science that hinges on the combination of pointing and detailed 
+      an integrated program with science that hinges on the combination of pointing and detailed 
+	observing strategy (e.g., search for variable stars in the 
+	LMC/SMC). 
+%       \item other category (please describe).
+%    \end{itemize}  
+\end{enumerate}  
+
+\clearpage
+
+\section{Scientific Motivation}
+% \begin{footnotesize}
+%{\it Describe the scientific justification for this white paper in the context
+%of your field, as well as the importance to the general program of astronomy, 
+%including the relevance over the next decade. 
+%Describe other relevant data, and justify why LSST is the best facility for these observations.
+%(Limit: 2 pages + 1 page for figures.)} % XXX
+% \end{footnotesize}
+
+XXX
+
+% mettallicity dependence: http://adsabs.harvard.edu/abs/2015AJ....149...14W
+% mettallicity dependence: http://adsabs.harvard.edu/abs/2005ApJ...622.1102F
+% Thompson+14 http://adsabs.harvard.edu/abs/2013MNRAS.431...63T
+
+% LSST transiting planets papers:
+% http://adsabs.harvard.edu/abs/2017AJ....153..186J
+% http://adsabs.harvard.edu/abs/2015AJ....150...34J
+% http://adsabs.harvard.edu/abs/2015AJ....149...16L
+
+% SMC self-lensing:
+% http://adsabs.harvard.edu/abs/1998ApJ...508L.147S
+% http://adsabs.harvard.edu/abs/2011MNRAS.416.2949W - not allways self-lensing
+
+\citep{mroz18b}
+
+\citep{suzuki16}, \citep{udalski18b}
+
+\citep{ivezic18}
+
+\citep{marigo17}
+
+\vspace{.6in}
+
+\section{Technical Description}
+%\begin{footnotesize}
+%{\it Describe your survey strategy modifications or proposed observations. Please comment on each observing constraint
+%below, including the technical motivation behind any constraints. Where relevant, indicate
+%if the constraint applies to all requested observations or a specific subset. Please note which 
+%constraints are not relevant or important for your science goals.}
+%\end{footnotesize}
+
+\subsection{High-level description}
+%\begin{footnotesize}
+% XXX {\it Describe or illustrate your ideal sequence of observations.}
+%\end{footnotesize}
+
+XXX
+
+\vspace{.3in}
+
+\subsection{Footprint -- pointings, regions and/or constraints}
+%\begin{footnotesize}{\it Describe the specific pointings or general region (RA/Dec, Galactic longitude/latitude or 
+%Ecliptic longitude/latitude) for the observations. Please describe any additional requirements, especially if there
+%are no specific constraints on the pointings (e.g. stellar density, galactic dust extinction).}
+%\end{footnotesize}
+
+The large field of view of LSST allows covering almost entire sky-region in a single pointing. 
+It would be best to center the pointing at  
+${\rm R.A.} = 0^{\rm h}58^{\rm m}$,  % 00:57:33.12 -73:00:07.20
+${\rm Dec.} = -73^{\circ}00'$. 
+
+\subsection{Image quality}
+\begin{footnotesize}{\it Constraints on the image quality (seeing).}\end{footnotesize}
+
+XXX
+
+\subsection{Individual image depth and/or sky brightness}
+%\begin{footnotesize}{\it Constraints on the sky brightness in each image and/or individual image depth for point sources.
+%Please differentiate between motivation for a desired sky brightness or individual image depth (as 
+%calculated for point sources). Please provide sky brightness or image depth constraints per filter.}
+%\end{footnotesize}
+
+XXX
+
+\subsection{Co-added image depth and/or total number of visits}
+%\begin{footnotesize}{\it  Constraints on the total co-added depth and/or total number of visits.
+%Please differentiate between motivations for a given co-added depth and total number of visits. 
+%Please provide desired co-added depth and/or total number of visits per filter, if relevant.}
+%\end{footnotesize}
+
+XXX
+
+\subsection{Number of visits within a night}
+%\begin{footnotesize}{\it Constraints on the number of exposures (or visits) in a night, especially if considering sequences of visits.  }
+%\end{footnotesize}
+
+XXX
+
+\subsection{Distribution of visits over time}
+%\begin{footnotesize}{\it Constraints on the timing of visits --- within a night, between nights, between seasons or
+%between years (which could be relevant for rolling cadence choices in the WideFastDeep. 
+%Please describe optimum visit timing as well as acceptable limits on visit timing, and options in
+%case of missed visits (due to weather, etc.). If this timing should include particular sequences
+%of filters, please describe.}
+%\end{footnotesize}
+
+XXX
+
+\subsection{Filter choice}
+%\begin{footnotesize}
+%{\it Please describe any filter constraints not included above.}
+%end{footnotesize}
+
+XXX
+
+\subsection{Exposure constraints}
+%\begin{footnotesize}
+%{\it Describe any constraints on the minimum or maximum exposure time per visit required (or alternatively, saturation limits).
+%Please comment on any constraints on the number of exposures in a visit.}
+%\end{footnotesize}
+
+XXX
+
+\subsection{Other constraints}
+%\begin{footnotesize}
+%{\it Any other constraints.}
+%\end{footnotesize}
+
+XXX
+
+\subsection{Estimated time requirement}
+%\begin{footnotesize}
+%{\it Approximate total time requested for these observations, using the guidelines available at \url{https://github.com/lsst-pst/survey_strategy_wp}.}
+% XXX - https://github.com/lsst-pst/survey_strategy_wp
+%\end{footnotesize}
+
+\vspace{.3in}
+
+XXX - table below
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|l|l|l}
+        \toprule
+        Properties & Importance \hspace{.3in} \\
+        \midrule
+        Image quality &     \\
+        Sky brightness &  \\
+        Individual image depth &   \\
+        Co-added image depth &   \\
+        Number of exposures in a visit   &   \\
+        Number of visits (in a night)  &   \\ 
+        Total number of visits &   \\
+        Time between visits (in a night) &  \\
+        Time between visits (between nights)  &   \\
+        Long-term gaps between visits & \\
+        Other (please add other constraints as needed) & \\
+        \bottomrule
+    \end{tabular}
+    \caption{{\bf Constraint Rankings:} Summary of the relative importance of various survey strategy constraints. Please rank the importance of each of these considerations, from 1=very important, 2=somewhat important, 3=not important. If a given constraint depends on other parameters in the table, but these other parameters are not important in themselves, please only mark the final constraint as important. For example, individual image depth depends on image quality, sky brightness, and number of exposures in a visit; if your science depends on the individual image depth but not directly on the other parameters, individual image depth would be `1' and the other parameters could be marked as `3', giving us the most flexibility when determining the composition of a visit, for example.}
+        \label{tab:obs_constraints}
+\end{table}
+
+\subsection{Technical trades}
+%\begin{footnotesize}
+%{\it To aid in attempts to combine this proposed survey modification with others, please address the following questions:
+%\begin{enumerate}
+%    \item What is the effect of a trade-off between your requested survey footprint (area) and requested co-added depth or number of visits?
+%    \item If not requesting a specific timing of visits, what is the effect of a trade-off between the uniformity of observations and the frequency of observations in time? e.g. a `rolling cadence' increases the frequency of visits during a short time period at the cost of fewer visits the rest of the time, making the overall sampling less uniform.
+%    \item What is the effect of a trade-off on the exposure time and number of visits (e.g. increasing the individual image depth but decreasing the overall number of visits)?
+%    \item What is the effect of a trade-off between uniformity in number of visits and co-added depth? Is there any benefit to real-time exposure time optimization to obtain nearly constant single-visit limiting depth?
+%    \item Are there any other potential trade-offs to consider when attempting to balance this proposal with others which may have similar but slightly different requests?
+%\end{enumerate}}
+%\end{footnotesize}
+
+XXX
+
+\section{Performance Evaluation}
+%\begin{footnotesize}
+%{\it Please describe how to evaluate the performance of a given survey in achieving your desired
+%science goals, ideally as a heuristic tied directly to the observing strategy (e.g. number of visits obtained
+%within a window of time with a specified set of filters) with a clear link to the resulting effect on science.
+%More complex metrics which more directly evaluate science output (e.g. number of eclipsing binaries successfully
+%identified as a result of a given survey) are also encouraged, preferably as a secondary metric.
+%If possible, provide threshold values for these metrics at which point your proposed science would be unsuccessful 
+%and where it reaches an ideal goal, or explain why this is not possible to quantify. While not necessary, 
+%if you have already transformed this into a MAF metric, please add a link to the code (or a PR to 
+%\href{https://github.com/lsst-nonproject/sims_maf_contrib}{sims\_maf\_contrib}) in addition to the text description. (Limit: 2 pages).}
+%\end{footnotesize}
+
+XXX
+
+In our simulations of detection efficiency, we have included photometric follow-up observations.  
+The best follow-up would be uniform and 24-hour coverage of 
+every on-going microlensing event with high photometric accuracy. 
+SMC lies close to the South celestial pole and there is limited number of 
+observatories with good astronomical climate that can observe SMC.  
+There is a large number of telescopes located in Chile but they cover a narrow 
+range of longitudes.  Other observatories with large aperture telescopes are 
+Siding Spring Observatory (Australia) and 
+South African Astronomical Observatory (South Africa).  
+The number of clear nights and seeing are better for Chilean observatories.  
+Taking all these aspectes into account, we devide follow-up observations 
+into Chilean and non-Chilean.  
+For Chilean observatories, we assume observations are taken when SMC center 
+is at the altitude $>30^{\circ}$ and Sun is at the altitude $<-15^{\circ}$ 
+as seen from Cerro Pach\'{o}n.  We select nights for which these conditions 
+are fullfiled for at least $30~{\rm min.}$ and assume uniform cadence of 
+$1~{\rm hr}$.  To simulate the impact of clouds, we remove epochs for which 
+there is no LSST observations (in any field) $1~{\rm hr.}$ prior or after 
+considered follow-up epoch.  There are in total ten optical telescopes 
+in Chile that have aperture of $4~{\rm m}$ or larger.  
+We assume that follow-up observations will be conducted 
+using a $\approx4$-${\rm m}$ aperture telescope and the same exposure time as for LSST.  
+The same accuracy should be achivable using longer (and still reasonable) 
+exposure times on smaller telescopes.  To account for airmass, seeing, and 
+sky tranparency on photometric accuracy, we use the accuracy of the closest LSST observation 
+with additional correction of $\delta m_5 = -0.53~{\rm mag}$ added to $5\sigma$ depth of LSST 
+(for this we use $i$ observations in a few fields close to SMC), see \citet{ivezic18}. 
+
+The potential follow-up telescopes outside Chile have smaller apertures and 
+poorer weather conditions.  We simulate these additional follow-up epochs 
+assuming there is a single epoch per night and it is shifted by 12~hr 
+relative to observations in Chile.  Additionally, we select half of 
+the nights only.  To obtain photometric accuracy of these data, we follow 
+the same procedure as for Chilean follow-up observations.
+
+For each event, the follow-up observations are assumed to start $12~{\rm h.}$ 
+after event detection and end $3t_{\rm E}$ after the event peaks.
+
+The above strategy leads to on average 1400 follow-up epochs for 
+Chilean observatories over 10-month long season in {\tt baseline\_2018a} run. 
+For non-Chilean observatories there are on average 120 follow-up 
+epochs per season.  
+
+\vspace{.6in}
+
+\section{Special Data Processing}
+\begin{footnotesize}
+{\it Describe any data processing requirements beyond the standard LSST Data Management pipelines and how these will be achieved.}
+\end{footnotesize}
+
+No special data processing is needed. % XXX
+
+
+%  \section{Acknowledgements}  XXX
+
+\section{References}
+
+\newcommand*\aap{A\&A}
+\let\astap=\aap
+\newcommand*\aapr{A\&A~Rev.}
+\newcommand*\aaps{A\&AS}
+\newcommand*\actaa{Acta Astron.}
+\newcommand*\aj{AJ}
+\newcommand*\ao{Appl.~Opt.}
+\let\applopt\ao
+\newcommand*\apj{ApJ}
+\newcommand*\apjl{ApJ}
+\let\apjlett\apjl
+\newcommand*\apjs{ApJS}
+\let\apjsupp\apjs
+\newcommand*\aplett{Astrophys.~Lett.}
+\newcommand*\apspr{Astrophys.~Space~Phys.~Res.}
+\newcommand*\apss{Ap\&SS}
+\newcommand*\araa{ARA\&A}
+\newcommand*\azh{AZh}
+\newcommand*\baas{BAAS}
+\newcommand*\bac{Bull. astr. Inst. Czechosl.}
+\newcommand*\bain{Bull.~Astron.~Inst.~Netherlands}
+\newcommand*\caa{Chinese Astron. Astrophys.}
+\newcommand*\cjaa{Chinese J. Astron. Astrophys.}
+\newcommand*\fcp{Fund.~Cosmic~Phys.}
+\newcommand*\gca{Geochim.~Cosmochim.~Acta}
+\newcommand*\grl{Geophys.~Res.~Lett.}
+\newcommand*\iaucirc{IAU~Circ.}
+\newcommand*\icarus{Icarus}
+\newcommand*\jcap{J. Cosmology Astropart. Phys.}
+\newcommand*\jcp{J.~Chem.~Phys.}
+\newcommand*\jgr{J.~Geophys.~Res.}
+\newcommand*\jqsrt{J.~Quant.~Spectr.~Rad.~Transf.}
+\newcommand*\jrasc{JRASC}
+\newcommand*\memras{MmRAS}
+\newcommand*\memsai{Mem.~Soc.~Astron.~Italiana}
+\newcommand*\mnras{MNRAS}
+\newcommand*\na{New A}
+\newcommand*\nar{New A Rev.}
+\newcommand*\nat{Nature}
+\newcommand*\nphysa{Nucl.~Phys.~A}
+\newcommand*\pasa{PASA}
+\newcommand*\pasj{PASJ}
+\newcommand*\pasp{PASP}
+\newcommand*\physrep{Phys.~Rep.}
+\newcommand*\physscr{Phys.~Scr}
+\newcommand*\planss{Planet.~Space~Sci.}
+\newcommand*\pra{Phys.~Rev.~A}
+\newcommand*\prb{Phys.~Rev.~B}
+\newcommand*\prc{Phys.~Rev.~C}
+\newcommand*\prd{Phys.~Rev.~D}
+\newcommand*\pre{Phys.~Rev.~E}
+\newcommand*\prl{Phys.~Rev.~Lett.}
+\newcommand*\procspie{Proc.~SPIE}
+\newcommand*\qjras{QJRAS}
+\newcommand*\rmxaa{Rev. Mexicana Astron. Astrofis.}
+\newcommand*\skytel{S\&T}
+\newcommand*\solphys{Sol.~Phys.}
+\newcommand*\sovast{Soviet~Ast.}
+\newcommand*\ssr{Space~Sci.~Rev.}
+\newcommand*\zap{ZAp}
+\def\arxivprefixesep{:}
+\newcommand{\eprint}[2][]{{\tt\if!#1!#2\else#1\arxivprefixesep\ignorespaces#2\fi}}
+
+\renewcommand{\bibsection}{}
+
+\bibliographystyle{aa}
+\bibliography{SMC_LSST}
+
+\end{document}

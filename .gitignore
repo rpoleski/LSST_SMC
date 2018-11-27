@@ -5,7 +5,7 @@
 # latex auxiliary files:
 *.dvi
 *.blg
-*.bbl
+#*.bbl
 *.aux
 SMC_LSST.out
 SMC_LSST.log

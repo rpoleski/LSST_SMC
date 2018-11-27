@@ -1,0 +1,37 @@
+\begin{thebibliography}{5}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Ivezi{\'c}} {et~al.}(2018){Ivezi{\'c}}, {Kahn}, {Tyson}, {Abel},
+  {Acosta}, {Allsman}, {Alonso}, {AlSayyad}, {Anderson}, {Andrew}, \&
+  et~al.}]{ivezic18}
+{Ivezi{\'c}}, {\v Z}., {Kahn}, S.~M., {Tyson}, J.~A., {et~al.} 2018, ArXiv
+  e-prints [\eprint[arXiv]{0805.2366v5}]
+
+\bibitem[{{Marigo} {et~al.}(2017){Marigo}, {Girardi}, {Bressan}, {Rosenfield},
+  {Aringer}, {Chen}, {Dussin}, {Nanni}, {Pastorelli}, {Rodrigues}, {Trabucchi},
+  {Bladh}, {Dalcanton}, {Groenewegen}, {Montalb{\'a}n}, \& {Wood}}]{marigo17}
+{Marigo}, P., {Girardi}, L., {Bressan}, A., {et~al.} 2017, \apj, 835, 77
+
+\bibitem[{{Mr{\'o}z} \& {Poleski}(2018)}]{mroz18b}
+{Mr{\'o}z}, P. \& {Poleski}, R. 2018, \aj, 155, 154
+
+\bibitem[{{Suzuki} {et~al.}(2016){Suzuki}, {Bennett}, {Sumi}, {Bond}, {Rogers},
+  {Abe}, {Asakura}, {Bhattacharya}, {Donachie}, {Freeman}, {Fukui}, {Hirao},
+  {Itow}, {Koshimoto}, {Li}, {Ling}, {Masuda}, {Matsubara}, {Muraki},
+  {Nagakane}, {Onishi}, {Oyokawa}, {Rattenbury}, {Saito}, {Sharan}, {Shibai},
+  {Sullivan}, {Tristram}, {Yonehara}, \& {MOA Collaboration}}]{suzuki16}
+{Suzuki}, D., {Bennett}, D.~P., {Sumi}, T., {et~al.} 2016, \apj, 833, 145
+
+\bibitem[{{Udalski} {et~al.}(2018){Udalski}, {Ryu}, {Sajadian}, {Gould}, {Mr{\v
+  a}{\l}z}, {Poleski}, {Szyma{\'n}ski}, {Skowron}, {Soszy{\'n}ski},
+  {Koz{\l}owski}, {Pietrukowicz}, {Ulaczyk}, {Pawlak}, {Rybicki}, {Iwanek},
+  {Albrow}, {Chung}, {Han}, {Hwang}, {Jung}, {Shin}, {Shvartzvald}, {Yee},
+  {Zang}, {Zhu}, {Cha}, {Kim}, {Kim}, {Kim}, {Lee}, {Lee}, {Lee}, {Park},
+  {Pogge}, {Bozza}, {Dominik}, {Helling}, {Hundertmark}, {J{\o}rgensen},
+  {Longa-Pe{\~n}a}, {Lowry}, {Burgdorf}, {Campbell-White}, {Ciceri}, {Evans},
+  {Figuera Jaimes}, {Fujii}, {Haikala}, {Henning}, {Hinse}, {Mancini},
+  {Peixinho}, {Rahvar}, {Rabus}, {Skottfelt}, {Snodgrass}, {Southworth}, \&
+  {von Essen}}]{udalski18b}
+{Udalski}, A., {Ryu}, Y.-H., {Sajadian}, S., {et~al.} 2018, \actaa, 68, 1
+
+\end{thebibliography}
