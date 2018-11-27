@@ -1,4 +1,5 @@
 import numpy as np
+import math
 import pickle
 
 from ulens_lsst_smc import utils
@@ -52,6 +53,17 @@ class SimulatedEvents(object):
         self.survey_start = 2459853.
         self.survey_stop = 2463505.
 
+        # Ranges of properties of simulated planets:
+        self._min_s = 0.3
+        self._max_s = 3.0
+        self._min_q = 1.e-4
+        self._max_q = 0.03
+
+        self._min_log_s = math.log10(self._min_s)
+        self._max_log_s = math.log10(self._max_s)
+        self._min_log_q = math.log10(self._min_q)
+        self._max_log_q = math.log10(self._max_q)
+
     def _read_isochrone(self, file_name):
         """
         Reads isochrone file
@@ -98,6 +110,23 @@ class SimulatedEvents(object):
                                      self.n_samples)
         self.u_0 = np.random.uniform(-1., 1., self.n_samples)
 
+    def _Suzuki2016_Udalski2018(self, log_s, log_q):
+        """
+        Calculate planet rate assuming Galactic bulge properties.
+        """
+        s = 10**log_s
+        q = 10**log_q
+
+        A = 0.61
+        m = 0.49
+        q_br = 1.7e-4
+        if q > q_br:
+            n = -0.93
+        else:
+            n = 0.73
+
+        return A * (q/q_br)**n * s**m
+
     def add_planets(self):
         """
         Add parameters (s, q, alpha). The population of planet is taken from
@@ -108,5 +137,32 @@ class SimulatedEvents(object):
 
         XXX - do we modify it?
         """
-        pass
+        log_s = np.random.uniform(
+            self._min_log_s, self._max_log_s, self.n_samples)
+        log_q = np.random.uniform(
+            self._min_log_q, self._max_log_q, self.n_samples)
+        rates = np.ones(self.n_samples)
+        rates *= (self._max_log_q - self._min_log_q)
+        rates *= (self._max_log_s - self._min_log_s)
+        for (i, (logs, logq)) in enumerate(zip(log_s, log_q)):
+            rates[i] *= self._Suzuki2016_Udalski2018(logs, logq)
+
+        to_add = []
+        for (rate, logs, logq) in zip(rates, log_s, log_q):
+            n_add = int(rate)
+            for _ in range(n_add):
+                to_add.append([logs, logq])
+            if rate-n_add > np.random.uniform():
+                to_add.append([logs, logq])
+
+        if len(to_add) > self.n_samples:
+            raise ValueError('to many planets')
+
+        order = np.random.permutation(len(to_add))
+        ordered_to_add = []
+        for index in order:
+            ordered_to_add.append(to_add[index])
+
+        # XXX values are ready now they have to be added to the events
+        raise NotImplementedError('still not finished')
 
