@@ -9,7 +9,9 @@ isochrone_young_file = "../data/iso_2.0e8_0.004.dat"
 model_old_file = "../data/model_old.pkl"
 model_young_file = "../data/model_yng.pkl"
 
-microlensing_file = "../data/tE_mass_v1.dat"
+microlensing_file = "../data/model_fast.txt"
+
+out_file = "../data/simulated_events_001.json"
 
 n_samples = 10000
 
@@ -34,8 +36,7 @@ simulated.n_samples = n_samples
 
 simulated.generate_coords()
 simulated.generate_fluxes()
-simulated.generate_microlensing_parameteres()
+simulated.generate_microlensing_parameters()
 simulated.add_planets()
 
 simulated.save(out_file)
-
