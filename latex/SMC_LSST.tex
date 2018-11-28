@@ -15,6 +15,7 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{natbib}
+\usepackage{amssymb,amsmath}
 
 \title{Extragalactic Exoplanets -- Higher Cadence Observations of SMC}
 \author{Rados\l{}aw Poleski and Przemek Mr\'oz}
@@ -25,11 +26,11 @@
 \maketitle
 
 \begin{abstract}
-We propose to increase LSST cadence for the Small Magellanic Cloud (SMC) which will 
-enable finding dozens of microlensing events annually and potentially a few 
+We propose to increase LSST cadence for the Small Magellanic Cloud which will 
+enable finding dozens of microlensing events annually and potentially, a few 
 planetary events over the course of the survey.  These would be 
 the first extragalactic exoplanets ever discovered and will give us a unique constraint on 
-the planet formation under different environments.  We discuss what changes in 
+the planet formation and evolution under different environments.  We discuss what changes in 
 the LSST observing strategy are required.  Presented analysis takes into account 
 an extensive photometric follow-up program. 
 \end{abstract}
@@ -75,10 +76,80 @@ Please contact Radek Poleski, \url{poleski.1@osu.edu}, with any questions about 
 %(Limit: 2 pages + 1 page for figures.)} % XXX
 % \end{footnotesize}
 
-XXX
+The deep understanding of planet formation and evolution requires 
+studying planets in a wide range of environments.  Currently known exoplanets 
+are situated in the Milky Way and most of them are found close to the Sun 
+because of higher sensitivity of transit and radial velocity techniques for 
+brighter (hence nearby) host stars.  Discovering extragalactic exoplanets 
+is even more challenging than finding the Milky Way planets because of 
+larger distances.  High cadence observations of 
+the Small Magellanic Cloud (SMC) by LSST will allow 
+finding extragalactic exoplanets using gravitational microlensing 
+technique.  
 
-% mettallicity dependence: http://adsabs.harvard.edu/abs/2015AJ....149...14W
-% mettallicity dependence: http://adsabs.harvard.edu/abs/2005ApJ...622.1102F
+Microlensing is sensitive to the lens mass, not light, hence, 
+allows finding very faint objects.  Microlensing searches of exoplanets toward M31 
+have not yet found planets, mainly due too small number of events 
+\citep{ingrosso09,calchinovati14,lee15}.  The other possibility of 
+finding extragalacitc exoplanets with LSST --- transit method applied to LMC 
+--- requires a dedicated Deep-drilling field 
+(which is larger effort than proposed here) 
+and candidate transit will be 
+very difficult to confirm using even the next generation 30-m telescopes 
+\citep{lund15,jacklin15}.  In \citet{mroz18b} we proposed to observe SMC with 
+higher cadence, so that microlensing events can be found early and 
+detection of planetary signatures in these events could be done using 
+LSST data (if cadence is high enough) or using photometric follow-up 
+observations from smaller telescopes.  SMC is elongated along the line-of-sight 
+and the microlensing events 
+observed toward SMC are almost exclusively self-lensing, i.e., 
+both the lens and the source are in SMC \citep{sahu98,wyrzykowski11b}.  
+
+There are thousands of microlensing events discovered so far toward 
+the Galactic bulge.  Among these events, about 70 planetary events have 
+already been published and more are being analyzed.  
+% https://exoplanetarchive.ipac.caltech.edu/index.html
+The planetary companion to the microlensing host star shows its presence via 
+short-lasting anomaly \citep{mao91,gould92} ontop of 
+a point-source point-lens event \citep{paczynski86}.  The length of 
+the anomaly is on the order of Einstein timescale of the host event 
+multiplied by a square root of the mass ratio.  Galactic bulge microlensing 
+events have typical Einstein timescales of $\approx20~{\rm days}$, hence, 
+giant planets produce signals that last on the order of 1~day.  
+Current Galactic bulge microlensing surveys 
+(mainly KMT, OGLE-IV, and MOA-II, but also Wise and UKIRT) 
+have cadence of up to 15-20 minutes which allows robust detection of gas- and ice-giant 
+exoplanets using survey data only \citep[e.g.,][]{yee12,poleski14c,shvartzvald16a}.  
+The alternative approach is to follow-up events found by surveys with a network of 
+follow-up telescopes which can have small field-of-view cameras and, 
+in many cases, smaller apertures.  Follow-up observations are particularly useful for 
+high-magnification events (peak magnification $\gtrsim100$), 
+which both have higher planet detection efficiency and can be 
+recognized in advance \citep{griest98,gould10}.  Median Einstein timescale for 
+SMC events is $\approx3$ times longer than Galactic bulge events which leads to 
+a longer timescales of anomalies.  One-hour cadence in the SMC should be enough 
+to find high mass-ratio planets efficiently.  
+
+The LSST telescope and camera have unique capability 
+to study microlensing events toward SMC.  The photometry from the on-going 
+microlensing surveys is not deep enough to allow finding large enough 
+number of SMC events.  LSST field of view is large enough to cover almost 
+whole region of interest in just a single pointing.
+
+It is possible that planet frequency in the SMC is lower than in 
+the Solar neighborhood.  The correlation between stellar metallicity 
+and planet frequency is well known \citep{fischervalenti05,wang15}, 
+but without performing proposed experiment we cannot be sure if 
+it applies to smaller-mass hosts and wider orbit planets, which are probed 
+by microlensing.  Below we present expected yield that assumes fiducial 
+planet frequency rate and request the experiment with yield of a few planets 
+so that, scientifically interesting upper limits on 
+the planet frequency can be derived if no planet is detected.
+
+
+
+% metallicity dependence: http://adsabs.harvard.edu/abs/2015AJ....149...14W
+% metallicity dependence: http://adsabs.harvard.edu/abs/2005ApJ...622.1102F
 % Thompson+14 http://adsabs.harvard.edu/abs/2013MNRAS.431...63T
 
 % LSST transiting planets papers:
@@ -88,15 +159,9 @@ XXX
 
 % SMC self-lensing:
 % http://adsabs.harvard.edu/abs/1998ApJ...508L.147S
-% http://adsabs.harvard.edu/abs/2011MNRAS.416.2949W - not allways self-lensing
+% http://adsabs.harvard.edu/abs/2011MNRAS.416.2949W - not always self-lensing
 
-\citep{mroz18b}
 
-\citep{suzuki16}, \citep{udalski18b}
-
-\citep{ivezic18}
-
-\citep{marigo17}
 
 \vspace{.6in}
 
@@ -123,7 +188,8 @@ XXX
 %are no specific constraints on the pointings (e.g. stellar density, galactic dust extinction).}
 %\end{footnotesize}
 
-The large field of view of LSST allows covering almost entire sky-region in a single pointing. 
+The large field of view of LSST allows covering almost the entire sky-region 
+of interest in a single pointing. 
 It would be best to center the pointing at  
 ${\rm R.A.} = 0^{\rm h}58^{\rm m}$,  % 00:57:33.12 -73:00:07.20
 ${\rm Dec.} = -73^{\circ}00'$. 
@@ -216,8 +282,8 @@ XXX - table below
         Other (please add other constraints as needed) & \\
         \bottomrule
     \end{tabular}
-    \caption{{\bf Constraint Rankings:} Summary of the relative importance of various survey strategy constraints. Please rank the importance of each of these considerations, from 1=very important, 2=somewhat important, 3=not important. If a given constraint depends on other parameters in the table, but these other parameters are not important in themselves, please only mark the final constraint as important. For example, individual image depth depends on image quality, sky brightness, and number of exposures in a visit; if your science depends on the individual image depth but not directly on the other parameters, individual image depth would be `1' and the other parameters could be marked as `3', giving us the most flexibility when determining the composition of a visit, for example.}
-        \label{tab:obs_constraints}
+     \caption{{\bf Constraint Rankings:} Summary of the relative importance of various survey strategy constraints. Please rank the importance of each of these considerations, from 1=very important, 2=somewhat important, 3=not important. If a given constraint depends on other parameters in the table, but these other parameters are not important in themselves, please only mark the final constraint as important. For example, individual image depth depends on image quality, sky brightness, and number of exposures in a visit; if your science depends on the individual image depth but not directly on the other parameters, individual image depth would be `1' and the other parameters could be marked as `3', giving us the most flexibility when determining the composition of a visit, for example.}
+         \label{tab:obs_constraints}
 \end{table}
 
 \subsection{Technical trades}
@@ -249,48 +315,53 @@ XXX
 
 XXX
 
-In our simulations of detection efficiency, we have included photometric follow-up observations.  
+In our simulations of detection efficiency, 
+we have included intensive photometric follow-up observations.  
 The best follow-up would be uniform and 24-hour coverage of 
 every on-going microlensing event with high photometric accuracy. 
-SMC lies close to the South celestial pole and there is limited number of 
+SMC lies close to the South celestial pole and there is a limited number of 
 observatories with good astronomical climate that can observe SMC.  
-There is a large number of telescopes located in Chile but they cover a narrow 
-range of longitudes.  Other observatories with large aperture telescopes are 
+There is a large number of telescopes located in Chile, but they cover a narrow 
+range of longitudes.  Outside Chile, the only observatories with large aperture telescopes are 
 Siding Spring Observatory (Australia) and 
 South African Astronomical Observatory (South Africa).  
 The number of clear nights and seeing are better for Chilean observatories.  
-Taking all these aspectes into account, we devide follow-up observations 
+Taking all these aspects into account, we divide follow-up observations 
 into Chilean and non-Chilean.  
-For Chilean observatories, we assume observations are taken when SMC center 
+For Chilean observatories, we assume observations are taken when the SMC center 
 is at the altitude $>30^{\circ}$ and Sun is at the altitude $<-15^{\circ}$ 
 as seen from Cerro Pach\'{o}n.  We select nights for which these conditions 
-are fullfiled for at least $30~{\rm min.}$ and assume uniform cadence of 
-$1~{\rm hr}$.  To simulate the impact of clouds, we remove epochs for which 
-there is no LSST observations (in any field) $1~{\rm hr.}$ prior or after 
+are fulfilled for at least $30~{\rm min.}$ and assume uniform cadence of 
+$1~{\rm h}$.  To simulate the impact of clouds, we remove epochs for which 
+there is no LSST observations (in any field) $1~{\rm h}$ prior or after 
 considered follow-up epoch.  There are in total ten optical telescopes 
 in Chile that have aperture of $4~{\rm m}$ or larger.  
 We assume that follow-up observations will be conducted 
 using a $\approx4$-${\rm m}$ aperture telescope and the same exposure time as for LSST.  
-The same accuracy should be achivable using longer (and still reasonable) 
-exposure times on smaller telescopes.  To account for airmass, seeing, and 
-sky tranparency on photometric accuracy, we use the accuracy of the closest LSST observation 
+The same accuracy should be achievable using longer (and still reasonable) 
+exposure times on a 2-m class telescopes.  To account for airmass, seeing, and 
+sky transparency on photometric accuracy, we use the accuracy of the closest LSST observation 
 with additional correction of $\delta m_5 = -0.53~{\rm mag}$ added to $5\sigma$ depth of LSST 
-(for this we use $i$ observations in a few fields close to SMC), see \citet{ivezic18}. 
+(for this we use the $i$-band observations in a few fields close to SMC), see \citet{ivezic18}. 
 
 The potential follow-up telescopes outside Chile have smaller apertures and 
 poorer weather conditions.  We simulate these additional follow-up epochs 
-assuming there is a single epoch per night and it is shifted by 12~hr 
+assuming there is a single epoch per night and it is shifted by 12~h 
 relative to observations in Chile.  Additionally, we select half of 
 the nights only.  To obtain photometric accuracy of these data, we follow 
 the same procedure as for Chilean follow-up observations.
 
-For each event, the follow-up observations are assumed to start $12~{\rm h.}$ 
-after event detection and end $3t_{\rm E}$ after the event peaks.
+For each event, the follow-up observations are assumed to start $12~{\rm h}$ 
+after the event detection and end $3t_{\rm E}$ after the event peaks.
 
 The above strategy leads to on average 1400 follow-up epochs for 
 Chilean observatories over 10-month long season in {\tt baseline\_2018a} run. 
 For non-Chilean observatories there are on average 120 follow-up 
 epochs per season.  
+
+\citep{suzuki16}, \citep{udalski18b}
+
+\citep{marigo17}% isochrones
 
 \vspace{.6in}
 

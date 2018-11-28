@@ -1,11 +1,74 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{22}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Calchi Novati} {et~al.}(2014){Calchi Novati}, {Bozza}, {Bruni},
+  {Dall'Ora}, {De Paolis}, {Dominik}, {Gualandi}, {Ingrosso}, {Jetzer},
+  {Mancini}, {Nucita}, {Safonova}, {Scarpetta}, {Sereno}, {Strafella},
+  {Subramaniam}, {Gould}, \& {PLAN Collaboration}}]{calchinovati14}
+{Calchi Novati}, S., {Bozza}, V., {Bruni}, I., {et~al.} 2014, \apj, 783, 86
+
+\bibitem[{{Fischer} \& {Valenti}(2005)}]{fischervalenti05}
+{Fischer}, D.~A. \& {Valenti}, J. 2005, \apj, 622, 1102
+
+\bibitem[{{Gould} {et~al.}(2010){Gould}, {Dong}, {Gaudi}, {Udalski}, {Bond},
+  {Greenhill}, {Street}, {Dominik}, {Sumi}, {Szyma{\'n}ski}, {Han}, {Allen},
+  {Bolt}, {Bos}, {Christie}, {DePoy}, {Drummond}, {Eastman}, {Gal-Yam},
+  {Higgins}, {Janczak}, {Kaspi}, {Koz{\l}owski}, {Lee}, {Mallia}, {Maury},
+  {Maoz}, {McCormick}, {Monard}, {Moorhouse}, {Morgan}, {Natusch}, {Ofek},
+  {Park}, {Pogge}, {Polishook}, {Santallo}, {Shporer}, {Spector}, {Thornley},
+  {Yee}, {{$\mu$}FUN Collaboration}, {Kubiak}, {Pietrzy{\'n}ski},
+  {Soszy{\'n}ski}, {Szewczyk}, {Wyrzykowski}, {Ulaczyk}, {Poleski}, {OGLE
+  Collaboration}, {Abe}, {Bennett}, {Botzler}, {Douchin}, {Freeman}, {Fukui},
+  {Furusawa}, {Hearnshaw}, {Hosaka}, {Itow}, {Kamiya}, {Kilmartin}, {Korpela},
+  {Lin}, {Ling}, {Makita}, {Masuda}, {Matsubara}, {Miyake}, {Muraki}, {Nagaya},
+  {Nishimoto}, {Ohnishi}, {Okumura}, {Perrott}, {Philpott}, {Rattenbury},
+  {Saito}, {Sako}, {Sullivan}, {Sweatman}, {Tristram}, {von Seggern}, {Yock},
+  {MOA Collaboration}, {Albrow}, {Batista}, {Beaulieu}, {Brillant}, {Caldwell},
+  {Calitz}, {Cassan}, {Cole}, {Cook}, {Coutures}, {Dieters}, {Dominis Prester},
+  {Donatowicz}, {Fouqu{\'e}}, {Hill}, {Hoffman}, {Jablonski}, {Kane}, {Kains},
+  {Kubas}, {Marquette}, {Martin}, {Martioli}, {Meintjes}, {Menzies},
+  {Pedretti}, {Pollard}, {Sahu}, {Vinter}, {Wambsganss}, {Watson}, {Williams},
+  {Zub}, {PLANET Collaboration}, {Allan}, {Bode}, {Bramich}, {Burgdorf},
+  {Clay}, {Fraser}, {Hawkins}, {Horne}, {Kerins}, {Lister}, {Mottram},
+  {Saunders}, {Snodgrass}, {Steele}, {Tsapras}, {RoboNet Collaboration},
+  {J{\o}rgensen}, {Anguita}, {Bozza}, {Calchi Novati}, {Harps{\o}e}, {Hinse},
+  {Hundertmark}, {Kj{\ae}rgaard}, {Liebig}, {Mancini}, {Masi}, {Mathiasen},
+  {Rahvar}, {Ricci}, {Scarpetta}, {Southworth}, {Surdej}, {Th{\"o}ne}, \&
+  {MiNDSTEp Consortium}}]{gould10}
+{Gould}, A., {Dong}, S., {Gaudi}, B.~S., {et~al.} 2010, \apj, 720, 1073
+
+\bibitem[{{Gould} \& {Loeb}(1992)}]{gould92}
+{Gould}, A. \& {Loeb}, A. 1992, \apj, 396, 104
+
+\bibitem[{{Griest} \& {Safizadeh}(1998)}]{griest98}
+{Griest}, K. \& {Safizadeh}, N. 1998, \apj, 500, 37
+
+\bibitem[{{Ingrosso} {et~al.}(2009){Ingrosso}, {Novati}, {de Paolis}, {Jetzer},
+  {Nucita}, \& {Zakharov}}]{ingrosso09}
+{Ingrosso}, G., {Novati}, S.~C., {de Paolis}, F., {et~al.} 2009, \mnras, 399,
+  219
 
 \bibitem[{{Ivezi{\'c}} {et~al.}(2018){Ivezi{\'c}}, {Kahn}, {Tyson}, {Abel},
   {Acosta}, {Allsman}, {Alonso}, {AlSayyad}, {Anderson}, {Andrew}, \&
   et~al.}]{ivezic18}
 {Ivezi{\'c}}, {\v Z}., {Kahn}, S.~M., {Tyson}, J.~A., {et~al.} 2018, ArXiv
   e-prints [\eprint[arXiv]{0805.2366v5}]
+
+\bibitem[{{Jacklin} {et~al.}(2015){Jacklin}, {Lund}, {Pepper}, \&
+  {Stassun}}]{jacklin15}
+{Jacklin}, S., {Lund}, M.~B., {Pepper}, J., \& {Stassun}, K.~G. 2015, \aj, 150,
+  34
+
+\bibitem[{{Lee} {et~al.}(2015){Lee}, {Riffeser}, {Seitz}, {Bender}, \&
+  {Koppenhoefer}}]{lee15}
+{Lee}, C.-H., {Riffeser}, A., {Seitz}, S., {Bender}, R., \& {Koppenhoefer}, J.
+  2015, \apj, 806, 161
+
+\bibitem[{{Lund} {et~al.}(2015){Lund}, {Pepper}, \& {Stassun}}]{lund15}
+{Lund}, M.~B., {Pepper}, J., \& {Stassun}, K.~G. 2015, \aj, 149, 16
+
+\bibitem[{{Mao} \& {Paczy\'nski}(1991)}]{mao91}
+{Mao}, S. \& {Paczy\'nski}, B. 1991, \apjl, 374, L37
 
 \bibitem[{{Marigo} {et~al.}(2017){Marigo}, {Girardi}, {Bressan}, {Rosenfield},
   {Aringer}, {Chen}, {Dussin}, {Nanni}, {Pastorelli}, {Rodrigues}, {Trabucchi},
@@ -14,6 +77,27 @@
 
 \bibitem[{{Mr{\'o}z} \& {Poleski}(2018)}]{mroz18b}
 {Mr{\'o}z}, P. \& {Poleski}, R. 2018, \aj, 155, 154
+
+\bibitem[{{Paczy\'nski}(1986)}]{paczynski86}
+{Paczy\'nski}, B. 1986, \apj, 304, 1
+
+\bibitem[{{Poleski} {et~al.}(2014){Poleski}, {Skowron}, {Udalski}, {Han},
+  {Koz{\l}owski}, {Wyrzykowski}, {Dong}, {Szyma{\'n}ski}, {Kubiak},
+  {Pietrzy{\'n}ski}, {Soszy{\'n}ski}, {Ulaczyk}, {Pietrukowicz}, \&
+  {Gould}}]{poleski14c}
+{Poleski}, R., {Skowron}, J., {Udalski}, A., {et~al.} 2014, \apj, 795, 42
+
+\bibitem[{{Sahu} \& {Sahu}(1998)}]{sahu98}
+{Sahu}, K.~C. \& {Sahu}, M.~S. 1998, \apjl, 508, L147
+
+\bibitem[{{Shvartzvald} {et~al.}(2016){Shvartzvald}, {Maoz}, {Udalski}, {Sumi},
+  {Friedmann}, {Kaspi}, {Poleski}, {Szyma{\'n}ski}, {Skowron}, {Koz{\l}owski},
+  {Wyrzykowski}, {Mr{\'o}z}, {Pietrukowicz}, {Pietrzy{\'n}ski},
+  {Soszy{\'n}ski}, {Ulaczyk}, {Abe}, {Barry}, {Bennett}, {Bhattacharya},
+  {Bond}, {Freeman}, {Inayama}, {Itow}, {Koshimoto}, {Ling}, {Masuda}, {Fukui},
+  {Matsubara}, {Muraki}, {Ohnishi}, {Rattenbury}, {Saito}, {Sullivan},
+  {Suzuki}, {Tristram}, {Wakiyama}, \& {Yonehara}}]{shvartzvald16a}
+{Shvartzvald}, Y., {Maoz}, D., {Udalski}, A., {et~al.} 2016, \mnras, 457, 4089
 
 \bibitem[{{Suzuki} {et~al.}(2016){Suzuki}, {Bennett}, {Sumi}, {Bond}, {Rogers},
   {Abe}, {Asakura}, {Bhattacharya}, {Donachie}, {Freeman}, {Fukui}, {Hirao},
@@ -33,5 +117,29 @@
   {Peixinho}, {Rahvar}, {Rabus}, {Skottfelt}, {Snodgrass}, {Southworth}, \&
   {von Essen}}]{udalski18b}
 {Udalski}, A., {Ryu}, Y.-H., {Sajadian}, S., {et~al.} 2018, \actaa, 68, 1
+
+\bibitem[{{Wang} \& {Fischer}(2015)}]{wang15}
+{Wang}, J. \& {Fischer}, D.~A. 2015, \aj, 149, 14
+
+\bibitem[{{Wyrzykowski} {et~al.}(2011){Wyrzykowski}, {Skowron}, {Koz{\l}owski},
+  {Udalski}, {Szyma{\'n}ski}, {Kubiak}, {Pietrzy{\'n}ski}, {Soszy{\'n}ski},
+  {Szewczyk}, {Ulaczyk}, {Poleski}, \& {Tisserand}}]{wyrzykowski11b}
+{Wyrzykowski}, {\L}., {Skowron}, J., {Koz{\l}owski}, S., {et~al.} 2011, \mnras,
+  416, 2949
+
+\bibitem[{{Yee} {et~al.}(2012){Yee}, {Shvartzvald}, {Gal-Yam}, {Bond},
+  {Udalski}, {Koz{\l}owski}, {Han}, {Gould}, {Skowron}, {Suzuki}, {Abe},
+  {Bennett}, {Botzler}, {Chote}, {Freeman}, {Fukui}, {Furusawa}, {Itow},
+  {Kobara}, {Ling}, {Masuda}, {Matsubara}, {Miyake}, {Muraki}, {Ohmori},
+  {Ohnishi}, {Rattenbury}, {Saito}, {Sullivan}, {Sumi}, {Suzuki}, {Sweatman},
+  {Takino}, {Tristram}, {Wada}, {MOA Collaboration}, {Szyma{\'n}ski}, {Kubiak},
+  {Pietrzy{\'n}ski}, {Soszy{\'n}ski}, {Poleski}, {Ulaczyk}, {Wyrzykowski},
+  {Pietrukowicz}, {OGLE Collaboration}, {Allen}, {Almeida}, {Batista}, {Bos},
+  {Christie}, {DePoy}, {Dong}, {Drummond}, {Finkelman}, {Gaudi}, {Gorbikov},
+  {Henderson}, {Higgins}, {Jablonski}, {Kaspi}, {Manulis}, {Maoz}, {McCormick},
+  {McGregor}, {Monard}, {Moorhouse}, {Mu{\~n}oz}, {Natusch}, {Ngan}, {Ofek},
+  {Pogge}, {Santallo}, {Tan}, {Thornley}, {Shin}, {Choi}, {Park}, {Lee}, {Koo},
+  \& {{$\mu$}FUN Collaboration}}]{yee12}
+{Yee}, J.~C., {Shvartzvald}, Y., {Gal-Yam}, A., {et~al.} 2012, \apj, 755, 102
 
 \end{thebibliography}
