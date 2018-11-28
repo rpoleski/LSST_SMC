@@ -64,6 +64,8 @@ class SimulatedEvents(object):
         self._min_log_q = math.log10(self._min_q)
         self._max_log_q = math.log10(self._max_q)
 
+        self._planet_parameters = None
+
     def _read_isochrone(self, file_name):
         """
         Reads isochrone file
@@ -106,9 +108,9 @@ class SimulatedEvents(object):
         """
         Generates t_0 and u_0
         """
-        self.t_0 = np.random.uniform(self.survey_start, self.survey_stop,
+        self._t_0 = np.random.uniform(self.survey_start, self.survey_stop,
                                      self.n_samples)
-        self.u_0 = np.random.uniform(-1., 1., self.n_samples)
+        self._u_0 = np.random.uniform(-1., 1., self.n_samples)
 
     def _Suzuki2016_Udalski2018(self, log_s, log_q):
         """
@@ -147,6 +149,10 @@ class SimulatedEvents(object):
         for (i, (logs, logq)) in enumerate(zip(log_s, log_q)):
             rates[i] *= self._Suzuki2016_Udalski2018(logs, logq)
 
+        # If the rate for given (s,q) is >1 than we add multiple planets
+        # to the list and later assign them to random events.
+        # This way total number of planets is conserved and we have only
+        # 0 or 1 planets per system.
         to_add = []
         for (rate, logs, logq) in zip(rates, log_s, log_q):
             n_add = int(rate)
@@ -158,11 +164,13 @@ class SimulatedEvents(object):
         if len(to_add) > self.n_samples:
             raise ValueError('to many planets')
 
-        order = np.random.permutation(len(to_add))
-        ordered_to_add = []
-        for index in order:
-            ordered_to_add.append(to_add[index])
+        order = np.random.permutation(self.n_samples)
+        alpha = np.random.uniform(0., 360., len(to_add))
 
-        # XXX values are ready now they have to be added to the events
-        raise NotImplementedError('still not finished')
+        if self._planet_parameters is None:
+            self._planet_parameters = [{} for _ in range(self.n_samples)]
 
+        for i in range(len(to_add)):
+            params = to_add[i]
+            self._planet_parameters[order[i]] = {
+                's': 10**params[0], 'q': 10**params[1], 'alpha': alpha[i]}
