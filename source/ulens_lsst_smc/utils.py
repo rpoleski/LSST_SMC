@@ -4,6 +4,7 @@ import configparser
 
 # Contains:
 #  get_dicts_from_file()
+#  parse_dict()
 #  find_nearest_value()
 #  find_index_of_nearest_value()
 
@@ -34,6 +35,22 @@ def get_dicts_from_file(file_name):
             b_fluxes[var] = config.getfloat(section, var)
 
     return param, b_fluxes, s_fluxes
+
+def parse_dict(input_dict):
+    """
+    XXX
+    """
+    parameters = {}
+    source_flux = {}
+    blending_flux = {}
+    for (key, value) in input_dict.items():
+        if key.startswith("source_flux_"):
+            source_flux[key[-1]] = value
+        elif key.startswith("blending_flux_"):
+            blending_flux[key[-1]] = value
+        else:
+            parameters[key] = value
+    return (parameters, source_flux, blending_flux)
 
 def find_nearest_value(array, value):
     """
