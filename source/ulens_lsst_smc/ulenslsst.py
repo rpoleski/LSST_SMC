@@ -286,15 +286,26 @@ class UlensLSST(object):
         parameters_to_fit = ["t_0", "u_0", "t_E"]
         initial_guess = [self._parameters[p] for p in parameters_to_fit]
 
-        result = op.minimize(
-            chi2_fun, x0=initial_guess,
-            args=(self._event_PSPL, parameters_to_fit),
-            method='Newton-CG', jac=jacobian, tol=3.e-4)
+        failed = False
+        try:
+            result = op.minimize(
+                chi2_fun, x0=initial_guess,
+                args=(self._event_PSPL, parameters_to_fit),
+                method='Newton-CG', jac=jacobian, tol=3.e-4)
+        except:
+            failed = True
+
+        if failed:
+            try:
+                result = op.minimize(
+                    chi2_fun, x0=initial_guess,
+                    args=(self._event_PSPL, parameters_to_fit),
+                    method='Newton-CG', jac=jacobian, tol=3.e-4)
+            except:
+                pass
+# XXX what if fit failed (i.e., .success is False)?
 
         self._LSST_PSPL_chi2 = chi2_fun.best_chi2
-
-        #print("PSPL chi2:", self._LSST_PSPL_chi2)
-        #print("PSBL chi2:", self._binary_chi2_sum)
 
     def add_follow_up(self):
         """

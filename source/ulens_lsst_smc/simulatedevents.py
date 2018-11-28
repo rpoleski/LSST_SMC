@@ -251,12 +251,13 @@ class SimulatedEvents(object):
             file_.write("[\n")
             for i in range(self.n_samples):
                 out = {'t_0': self._t_0[i], 'u_0': self._u_0[i],
-                       't_E': self._t_E[i]}
+                       't_E': self._t_E[i], 'rho': 0.0001}
                 for (key, value) in self._planet_parameters[i].items():
                     out[key] = value
-                for band in self._bands:
-                    out["source_flux_" + band] = self._source_flux[i][band]
-                    out["blending_flux_" + band] = self._blending_flux[i][band]
+                for band_ in self._bands:
+                    band = band_.lower()
+                    out["source_flux_" + band] = self._source_flux[i][band_]
+                    out["blending_flux_" + band] = self._blending_flux[i][band_]
                 json.dump(out, file_)
                 if i < self.n_samples - 1:
                     file_.write(",\n")
