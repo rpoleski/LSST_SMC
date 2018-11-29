@@ -6,7 +6,8 @@ from ulens_lsst_smc.ulenslsst import UlensLSST
 from ulens_lsst_smc.utils import parse_dict
 
 
-opsim_data_file = '../data/15_baseline2018a_16.56875_-72.89689_EXPANDED_v1.dat'
+#opsim_data_file = '../data/15_baseline2018a_16.56875_-72.89689_EXPANDED_v1.dat'
+opsim_data_file = '../data/baseline2018a_16.56875_-72.89689_EXPANDED_v3.dat'
 
 parameters_file = '../data/simulated_events_001.json'
 

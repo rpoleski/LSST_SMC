@@ -1,6 +1,7 @@
 # text editor backups
 *.py~
 *.swp
+*.backup
 
 # latex auxiliary files:
 *.dvi

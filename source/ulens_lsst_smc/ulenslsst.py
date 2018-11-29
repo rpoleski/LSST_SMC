@@ -189,7 +189,7 @@ class UlensLSST(object):
         n_max = len(times) - n_consecutive
         
         for n in range(n_min, n_max):
-            mask = (times < times[n] - d_time)
+            mask = (times < times[n] - d_time) # XXX This can be improved.
             if np.sum(mask) < n_min:
                 continue
             earlier = flux[mask]
