@@ -74,7 +74,8 @@ class UlensLSST(object):
         self._parameters = parameters
         self._model = MM.Model(self._parameters, coords=coords)
 
-        self.bands = ['u', 'g', 'r', 'i', 'z', 'y'] # XXX - CHECK THAT
+        #self.bands = ['u', 'g', 'r', 'i', 'z', 'y'] # XXX - CHECK THAT
+        self.bands = ['r', 'g', 'i', 'z', 'y', 'u']
         self._simulated_flux = {b: None for b in self.bands}
         self._sigma_flux = {b: None for b in self.bands}
         self._binary_chi2_sum = 0.
@@ -380,10 +381,19 @@ class UlensLSST(object):
 
         return self._LSST_PSPL_chi2 - self._binary_chi2_sum
 
-    def plot_data(self):
+    def plot_data(self, kwargs_data=None, kwargs_model=None):
         """
         Plot simulated data. Use plt.savefig() or plt.show() afterwards.
         """
-        self._event_PSPL.plot_data()
-        self._event_PSPL.plot_model()
+        if kwargs_data is None:
+            kwargs_data = {}
+        if kwargs_model is None:
+            kwargs_model = {}
+
+        self._event_PSPL.plot_data(**kwargs_data)
+
+        self._model.set_datasets(self._event_PSPL.datasets)
+        for band in self.bands:
+            self._model.set_limb_coeff_u(band, 0.)
+        self._model.plot_lc(**kwargs_model)
         plt.legend()
