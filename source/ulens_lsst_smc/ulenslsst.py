@@ -168,7 +168,7 @@ class UlensLSST(object):
         temp = MM.Utils.get_flux_and_err_from_mag(model_mag, sigma_mag)
         sigma_flux = temp[1]
         
-        simulated = model_flux + np.random.normal(scale=sigma_flux)
+        simulated = model_flux + np.random.normal(scale=sigma_flux) # XXX negative flux
         
         if self._model.n_lenses == 2:
             diff = (model_flux - simulated) / sigma_flux
