@@ -66,7 +66,7 @@ class SimulatedEvents(object):
         self._source_max_mass_old = 0.92
         self._source_max_mass_young = 3.5
         self._imf_slope = 2.3
-        self._distance_modulus = 18.99
+        self._distance_modulus = 18.99 # includes extinction
 
         # Ranges of properties of simulated planets:
         self._min_s = 0.3
@@ -136,6 +136,7 @@ class SimulatedEvents(object):
 
     def generate_fluxes(self):
         """XXX"""
+        m_lens = 0.2 # very rough approximation
         mass_old = self._random_from_IMF(self._source_max_mass_old)
         mass_young = self._random_from_IMF(self._source_max_mass_young)
         self._source_mass = np.zeros(self.n_samples)
@@ -147,6 +148,7 @@ class SimulatedEvents(object):
 
         old_mags = {}
         young_mags = {}
+        lens_flux = {}
         for band in self._bands:
             old_mags[band] = np.interp(self._source_mass,
                 self._isochrone_old['M_initial'],
@@ -156,6 +158,11 @@ class SimulatedEvents(object):
                 self._isochrone_young[band])
             old_mags[band] += self._distance_modulus
             young_mags[band] += self._distance_modulus
+            lens_mag = np.interp(m_lens,
+                self._isochrone_young['M_initial'],
+                self._isochrone_young[band])
+            lens_flux[band] = Utils.get_flux_from_mag(lens_mag +
+                self._distance_modulus)
 
         old_radii = np.interp(self._source_mass,
             self._isochrone_old['M_initial'],
@@ -176,7 +183,7 @@ class SimulatedEvents(object):
                 self._source_radius[i] = old_radii[i]
             for band in self._bands:
                 self._source_flux[i][band] = Utils.get_flux_from_mag(mags[band][i])
-                self._blending_flux[i][band] = 0.
+                self._blending_flux[i][band] = lens_flux[band]
 
     def generate_microlensing_parameters(self):
         """
