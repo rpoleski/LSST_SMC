@@ -11,6 +11,8 @@ opsim_data_file = '../data/baseline2018a_16.56875_-72.89689_EXPANDED_v3.dat'
 
 parameters_file = '../data/simulated_events_001.json'
 
+chi2_detection_limit = 100.
+
 # settings end here
 
 dtypes = {'formats': ('f8', 'f8', 'S1'), 'names': ('MJD', '5s', 'f')}
@@ -36,3 +38,11 @@ for parameters_ in parameters_all:
     ulens.add_follow_up()
 
     print("Delta chi2 for binary lens:", ulens.delta_chi2_BL_PL, flush=True)
+    if ulens.delta_chi2_BL_PL is not None:
+        if ulens.delta_chi2_BL_PL > chi2_detection_limit:
+            print("Planet is detected.")
+            print("Parameters:")
+            print("t_0: {:.2f} u_0: {:.3f} t_E: {:.3f}".format(
+                *[parameters[p] for p in ['t_0', 'u_0', 't_E']]))
+            print("rho: {:.4f} s: {:.3f} q: {:.5f} alpha: {:.2f}".format(
+                *[parameters[p] for p in ['rho', 's', 'q', 'alpha']]))
