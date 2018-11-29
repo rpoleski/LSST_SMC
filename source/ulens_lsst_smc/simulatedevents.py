@@ -67,6 +67,7 @@ class SimulatedEvents(object):
         self._source_max_mass_young = 3.5
         self._imf_slope = 2.3
         self._distance_modulus = 18.99 # includes extinction
+        self._m_lens = 0.2 # very rough approximation
 
         # Ranges of properties of simulated planets:
         self._min_s = 0.3
@@ -134,9 +135,8 @@ class SimulatedEvents(object):
         mass = pow(u + pow(self._source_min_mass, slope), 1./slope)
         return mass
 
-    def generate_fluxes(self):
-        """XXX"""
-        m_lens = 0.2 # very rough approximation
+    def _generate_source_mass(self):
+        """just generate masses of sources"""
         mass_old = self._random_from_IMF(self._source_max_mass_old)
         mass_young = self._random_from_IMF(self._source_max_mass_young)
         self._source_mass = np.zeros(self.n_samples)
@@ -146,6 +146,8 @@ class SimulatedEvents(object):
             else:
                 self._source_mass[i] = mass_old[i]
 
+    def _generate_source_and_lens_flux(self):
+        """generates fluxes of source and lens"""
         old_mags = {}
         young_mags = {}
         lens_flux = {}
@@ -158,7 +160,7 @@ class SimulatedEvents(object):
                 self._isochrone_young[band])
             old_mags[band] += self._distance_modulus
             young_mags[band] += self._distance_modulus
-            lens_mag = np.interp(m_lens,
+            lens_mag = np.interp(self._m_lens,
                 self._isochrone_young['M_initial'],
                 self._isochrone_young[band])
             lens_flux[band] = Utils.get_flux_from_mag(lens_mag +
@@ -184,6 +186,12 @@ class SimulatedEvents(object):
             for band in self._bands:
                 self._source_flux[i][band] = Utils.get_flux_from_mag(mags[band][i])
                 self._blending_flux[i][band] = lens_flux[band]
+
+    def generate_fluxes(self):
+        """XXX"""
+        self._generate_source_mass()
+        self._generate_source_and_lens_flux()
+        #self._generate_additional_blending_flux()
 
     def generate_microlensing_parameters(self):
         """
