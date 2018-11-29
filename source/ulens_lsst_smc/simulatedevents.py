@@ -2,6 +2,7 @@ import numpy as np
 import math
 import pickle
 import json
+from scipy.integrate import simps
 
 from MulensModel import Utils
 
@@ -67,7 +68,9 @@ class SimulatedEvents(object):
         self._source_max_mass_young = 3.5
         self._imf_slope = 2.3
         self._distance_modulus = 18.99 # includes extinction
-        self._m_lens = 0.2 # very rough approximation
+        self._lens_mass = 0.2 # very rough approximation
+        self._seeing_FWHM = 1. # arcsec - used to estimate blending
+        self._m_total_SMC = 1.e9 # total mass of SMC in M_Sun
 
         # Ranges of properties of simulated planets:
         self._min_s = 0.3
@@ -122,18 +125,16 @@ class SimulatedEvents(object):
         self._ra = np.concatenate( (ra_yng, ra_old) )
         self._dec = np.concatenate( (dec_yng, dec_old) )
         self._dist = np.concatenate( (dist_yng, dist_old) )
+        self._coords = np.concatenate( (coords_yng, coords_old) )
 
     def _random_from_IMF(self, source_max_mass):
         """
         Drawing random source masses from the IMF
         """
-        slope = 1. - self._imf_slope
-        min_ = pow(self._source_min_mass, slope)
-        max_ = pow(source_max_mass, slope)
-        norm = slope / (max_ - min_)
-        u = np.random.rand(self.n_samples) * slope / norm
-        mass = pow(u + pow(self._source_min_mass, slope), 1./slope)
-        return mass
+        u = np.random.rand(self.n_samples)
+        out = utils.random_power_law(self._imf_slope, self._source_min_mass,
+                source_max_mass, u)
+        return out
 
     def _generate_source_mass(self):
         """just generate masses of sources"""
@@ -160,7 +161,7 @@ class SimulatedEvents(object):
                 self._isochrone_young[band])
             old_mags[band] += self._distance_modulus
             young_mags[band] += self._distance_modulus
-            lens_mag = np.interp(self._m_lens,
+            lens_mag = np.interp(self._lens_mass,
                 self._isochrone_young['M_initial'],
                 self._isochrone_young[band])
             lens_flux[band] = Utils.get_flux_from_mag(lens_mag +
@@ -187,11 +188,59 @@ class SimulatedEvents(object):
                 self._source_flux[i][band] = Utils.get_flux_from_mag(mags[band][i])
                 self._blending_flux[i][band] = lens_flux[band]
 
+    def _generate_additional_blending_flux(self):
+        """
+        simulate how much mass is within seeing and then simulate masses
+        in addition to lens and source
+        """
+        distance_min = 45. # kpc
+        distance_max = 80. # kpc
+
+        distances = np.arange(distance_min, distance_max)
+        coords_temp = np.zeros( (len(distances), 3) )
+        coords_temp[:, 2] = distances
+        factor = np.pi * (0.5*self._seeing_FWHM * distances / 206265.)**2
+        factor *= self._m_total_SMC
+        for i in range(self.n_samples):
+            coords_temp[:, 0] = self._coords[i, 0]
+            coords_temp[:, 1] = self._coords[i, 1]
+            densities_old = np.exp(self._GMM_old.score_samples(coords_temp))
+            densities_young = np.exp(self._GMM_young.score_samples(coords_temp))
+            densities_old *= factor
+            densities_young *= factor
+            old_mass = (1.-self.frac_young) * simps(densities_old, distances)
+            young_mass = self.frac_young * simps(densities_young, distances)
+            total_mass = old_mass + young_mass
+
+            masses = []
+            mass_diff = total_mass - self._source_mass[i] - self._lens_mass
+            while mass_diff > 0.08:
+                if mass_diff > 0.5:
+                    mass = utils.random_broken_power_law(1.3, 2.3, 0.08, 0.5, mass_diff)
+                else:
+                    mass = utils.random_power_law(1.3, 0.08, mass_diff)
+                masses.append(mass)
+                mass_diff -= mass
+                # Update blending fluxes:
+                if np.random.rand() < self.frac_young:
+                    if mass < self._source_max_mass_young:
+                    # More massive objects are already WD etc.
+                        for band in self._bands:
+                            mag = np.interp(mass, self._isochrone_young['M_initial'],
+                                self._isochrone_young[band]) + self._distance_modulus
+                            self._blending_flux[i][band] += Utils.get_flux_from_mag(mag)
+                else:
+                    if mass < self._source_max_mass_old:
+                        for band in self._bands:
+                            mag = np.interp(mass, self._isochrone_old['M_initial'],
+                                self._isochrone_old[band]) + self._distance_modulus
+                            self._blending_flux[i][band] += Utils.get_flux_from_mag(mag)
+
     def generate_fluxes(self):
         """XXX"""
         self._generate_source_mass()
         self._generate_source_and_lens_flux()
-        #self._generate_additional_blending_flux()
+        self._generate_additional_blending_flux()
 
     def generate_microlensing_parameters(self):
         """
