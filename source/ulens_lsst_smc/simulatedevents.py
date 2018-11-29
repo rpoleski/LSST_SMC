@@ -144,8 +144,6 @@ class SimulatedEvents(object):
                 self._source_mass[i] = mass_young[i]
             else:
                 self._source_mass[i] = mass_old[i]
-        self._source_flux = [{} for _ in range(self.n_samples)]
-        self._blending_flux = [{} for _ in range(self.n_samples)]
 
         old_mags = {}
         young_mags = {}
@@ -159,18 +157,30 @@ class SimulatedEvents(object):
             old_mags[band] += self._distance_modulus
             young_mags[band] += self._distance_modulus
 
+        old_radii = np.interp(self._source_mass,
+            self._isochrone_old['M_initial'],
+            self._isochrone_old['radius'])
+        young_radii = np.interp(self._source_mass,
+            self._isochrone_young['M_initial'],
+            self._isochrone_young['radius'])
+
+        self._source_flux = [{} for _ in range(self.n_samples)]
+        self._blending_flux = [{} for _ in range(self.n_samples)]
+        self._source_radius = np.zeros(self.n_samples)
         for i in range(self.n_samples):
             if self._flag[i] == 0:
                 mags = young_mags
+                self._source_radius[i] = young_radii[i]
             else:
                 mags = old_mags
+                self._source_radius[i] = old_radii[i]
             for band in self._bands:
                 self._source_flux[i][band] = Utils.get_flux_from_mag(mags[band][i])
                 self._blending_flux[i][band] = 0.
 
     def generate_microlensing_parameters(self):
         """
-        Generates t_0, u_0, and t_E
+        Generates internal parameters: t_0, u_0, t_E, theta_E, and rho.
         """
         self._t_0 = np.random.uniform(self.survey_start, self.survey_stop,
                                      self.n_samples)
@@ -182,6 +192,16 @@ class SimulatedEvents(object):
         prob = np.random.uniform(0., 1., self.n_samples)
         log_t_E_rand = np.interp(prob, CDF, log_t_E)
         self._t_E = pow(10., log_t_E_rand)
+
+        mu_rel = np.random.normal(0.281, 0.135, self.n_samples)
+        mu_rel[mu_rel < 0.01] = 0.01
+        self._theta_E = self._t_E * mu_rel / 365.25 # mas
+
+        radius = self._source_radius * 0.696e6 # km
+        theta_star = radius / (65.e3 * 149.6e6) # arcsec; Here we assume 65kpc
+        # because it's a source distance.
+        theta_star *= 1000. # mas
+        self._rho = theta_star / self._theta_E
 
     def _Suzuki2016_Udalski2018(self, log_s, log_q):
         """
@@ -254,7 +274,7 @@ class SimulatedEvents(object):
             file_.write("[\n")
             for i in range(self.n_samples):
                 out = {'t_0': self._t_0[i], 'u_0': self._u_0[i],
-                       't_E': self._t_E[i], 'rho': 0.0001}
+                       't_E': self._t_E[i], 'rho': self._rho[i]}
                 for (key, value) in self._planet_parameters[i].items():
                     out[key] = value
                 for band_ in self._bands:
