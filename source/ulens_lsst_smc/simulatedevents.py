@@ -198,7 +198,8 @@ class SimulatedEvents(object):
         self._theta_E = self._t_E * mu_rel / 365.25 # mas
 
         radius = self._source_radius * 0.696e6 # km
-        theta_star = radius / (65.e3 * 149.6e6) # as
+        theta_star = radius / (65.e3 * 149.6e6) # arcsec; Here we assume 65kpc
+        # because it's a source distance.
         theta_star *= 1000. # mas
         self._rho = theta_star / self._theta_E
 
