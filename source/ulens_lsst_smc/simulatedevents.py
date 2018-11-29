@@ -177,8 +177,11 @@ class SimulatedEvents(object):
         self._u_0 = np.random.uniform(-1., 1., self.n_samples)
 
         (log_t_E, weights) = np.loadtxt(self._microlensing_file, unpack=True)
-        prob = weights / np.sum(weights)
-        self._t_E = np.random.choice(10**log_t_E, self.n_samples, p=prob)
+        CDF = np.cumsum(weights)
+        CDF /= CDF[-1]
+        prob = np.random.uniform(0., 1., self.n_samples)
+        log_t_E_rand = np.interp(prob, CDF, log_t_E)
+        self._t_E = pow(10., log_t_E_rand)
 
     def _Suzuki2016_Udalski2018(self, log_s, log_q):
         """
