@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{20}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Calchi Novati} {et~al.}(2014){Calchi Novati}, {Bozza}, {Bruni},
@@ -70,10 +70,24 @@
 \bibitem[{{Mao} \& {Paczy\'nski}(1991)}]{mao91}
 {Mao}, S. \& {Paczy\'nski}, B. 1991, \apjl, 374, L37
 
-\bibitem[{{Marigo} {et~al.}(2017){Marigo}, {Girardi}, {Bressan}, {Rosenfield},
-  {Aringer}, {Chen}, {Dussin}, {Nanni}, {Pastorelli}, {Rodrigues}, {Trabucchi},
-  {Bladh}, {Dalcanton}, {Groenewegen}, {Montalb{\'a}n}, \& {Wood}}]{marigo17}
-{Marigo}, P., {Girardi}, L., {Bressan}, A., {et~al.} 2017, \apj, 835, 77
+\bibitem[{{Marshall} {et~al.}(2017){Marshall}, {Anguita}, {Bianco}, {Bellm},
+  {Brandt}, {Clarkson}, {Connolly}, {Gawiser}, {Ivezic}, {Jones}, {Lochner},
+  {Lund}, {Mahabal}, {Nidever}, {Olsen}, {Ridgway}, {Rhodes}, {Shemmer},
+  {Trilling}, {Vivas}, {Walkowicz}, {Willman}, {Yoachim}, {Anderson},
+  {Antilogus}, {Angus}, {Arcavi}, {Awan}, {Biswas}, {Bell}, {Bennett}, {Britt},
+  {Buzasi}, {Casetti-Dinescu}, {Chomiuk}, {Claver}, {Cook}, {Davenport},
+  {Debattista}, {Digel}, {Doctor}, {Firth}, {Foley}, {Fong}, {Galbany},
+  {Giampapa}, {Gizis}, {Graham}, {Grillmair}, {Gris}, {Haiman}, {Hartigan},
+  {Hawley}, {Hlozek}, {Jha}, {Johns-Krull}, {Kanbur}, {Kalogera}, {Kashyap},
+  {Kasliwal}, {Kessler}, {Kim}, {Kurczynski}, {Lahav}, {Liu}, {Malz},
+  {Margutti}, {Matheson}, {McEwen}, {McGehee}, {Meibom}, {Meyers}, {Monet},
+  {Neilsen}, {Newman}, {O'Dowd}, {Peiris}, {Penny}, {Peters}, {Poleski},
+  {Ponder}, {Richards}, {Rho}, {Rubin}, {Schmidt}, {Schuhmann}, {Shporer},
+  {Slater}, {Smith}, {Soares-Santos}, {Stassun}, {Strader}, {Strauss},
+  {Street}, {Stubbs}, {Sullivan}, {Szkody}, {Trimble}, {Tyson}, {de Val-Borro},
+  {Valenti}, {Wagoner}, {Wood-Vasey}, \& {Zauderer}}]{marshall17}
+{Marshall}, P., {Anguita}, T., {Bianco}, F.~B., {et~al.} 2017, ArXiv e-prints
+  [\eprint[arXiv]{1708.04058}]
 
 \bibitem[{{Mr{\'o}z} \& {Poleski}(2018)}]{mroz18b}
 {Mr{\'o}z}, P. \& {Poleski}, R. 2018, \aj, 155, 154
@@ -98,25 +112,6 @@
   {Matsubara}, {Muraki}, {Ohnishi}, {Rattenbury}, {Saito}, {Sullivan},
   {Suzuki}, {Tristram}, {Wakiyama}, \& {Yonehara}}]{shvartzvald16a}
 {Shvartzvald}, Y., {Maoz}, D., {Udalski}, A., {et~al.} 2016, \mnras, 457, 4089
-
-\bibitem[{{Suzuki} {et~al.}(2016){Suzuki}, {Bennett}, {Sumi}, {Bond}, {Rogers},
-  {Abe}, {Asakura}, {Bhattacharya}, {Donachie}, {Freeman}, {Fukui}, {Hirao},
-  {Itow}, {Koshimoto}, {Li}, {Ling}, {Masuda}, {Matsubara}, {Muraki},
-  {Nagakane}, {Onishi}, {Oyokawa}, {Rattenbury}, {Saito}, {Sharan}, {Shibai},
-  {Sullivan}, {Tristram}, {Yonehara}, \& {MOA Collaboration}}]{suzuki16}
-{Suzuki}, D., {Bennett}, D.~P., {Sumi}, T., {et~al.} 2016, \apj, 833, 145
-
-\bibitem[{{Udalski} {et~al.}(2018){Udalski}, {Ryu}, {Sajadian}, {Gould}, {Mr{\v
-  a}{\l}z}, {Poleski}, {Szyma{\'n}ski}, {Skowron}, {Soszy{\'n}ski},
-  {Koz{\l}owski}, {Pietrukowicz}, {Ulaczyk}, {Pawlak}, {Rybicki}, {Iwanek},
-  {Albrow}, {Chung}, {Han}, {Hwang}, {Jung}, {Shin}, {Shvartzvald}, {Yee},
-  {Zang}, {Zhu}, {Cha}, {Kim}, {Kim}, {Kim}, {Lee}, {Lee}, {Lee}, {Park},
-  {Pogge}, {Bozza}, {Dominik}, {Helling}, {Hundertmark}, {J{\o}rgensen},
-  {Longa-Pe{\~n}a}, {Lowry}, {Burgdorf}, {Campbell-White}, {Ciceri}, {Evans},
-  {Figuera Jaimes}, {Fujii}, {Haikala}, {Henning}, {Hinse}, {Mancini},
-  {Peixinho}, {Rahvar}, {Rabus}, {Skottfelt}, {Snodgrass}, {Southworth}, \&
-  {von Essen}}]{udalski18b}
-{Udalski}, A., {Ryu}, Y.-H., {Sajadian}, S., {et~al.} 2018, \actaa, 68, 1
 
 \bibitem[{{Wang} \& {Fischer}(2015)}]{wang15}
 {Wang}, J. \& {Fischer}, D.~A. 2015, \aj, 149, 14

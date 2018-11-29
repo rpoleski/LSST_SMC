@@ -92,7 +92,7 @@ allows one to find very faint objects.  Microlensing searches of exoplanets in M
 have not yet found planets, mainly due too small number of events 
 \citep{ingrosso09,calchinovati14,lee15}.  The other possibility of 
 finding extragalacitc exoplanets with LSST --- transit method applied to LMC 
---- requires a dedicated Deep-drilling field 
+--- requires a dedicated Deep Drilling field 
 (which is larger effort than proposed here) 
 and candidate transit will be 
 very difficult to confirm using even the next generation 30-m telescopes 
@@ -173,14 +173,26 @@ the planet frequency can be derived if no planet is detected.
 %constraints are not relevant or important for your science goals.}
 %\end{footnotesize}
 
+% NO CONTENT HERE - ONLY IN SUBSECTIONS
+
+
 \subsection{High-level description}
 %\begin{footnotesize}
 % XXX {\it Describe or illustrate your ideal sequence of observations.}
 %\end{footnotesize}
 
-XXX
+{\bf Here we present technical description of a program where LSST 
+sampling is enough to discover microlensing events and most of planet 
+sensitivity comes from the follow-up observations.  
+If most of planet sensitivity comes from the LSST observations, 
+then cadence would need to be improved to $1~{\rm hour}$.  
+}
 
-\vspace{.3in}
+We propose for on the order of 2000 epochs % XXX
+to be taken in a single field in the SMC.  
+The sampling should be uniform in time and only $r$, $g$, and $i$ 
+filters give the highest yield.
+
 
 \subsection{Footprint -- pointings, regions and/or constraints}
 %\begin{footnotesize}{\it Describe the specific pointings or general region (RA/Dec, Galactic longitude/latitude or 
@@ -195,9 +207,10 @@ ${\rm R.A.} = 0^{\rm h}58^{\rm m}$,  % 00:57:33.12 -73:00:07.20
 ${\rm Dec.} = -73^{\circ}00'$. 
 
 \subsection{Image quality}
-\begin{footnotesize}{\it Constraints on the image quality (seeing).}\end{footnotesize}
+%\begin{footnotesize}{\it Constraints on the image quality (seeing).}\end{footnotesize}
 
-XXX
+Due to high crowding of the field, we request observations with seeing $< 2~{\rm arcsec}$.
+
 
 \subsection{Individual image depth and/or sky brightness}
 %\begin{footnotesize}{\it Constraints on the sky brightness in each image and/or individual image depth for point sources.
@@ -205,7 +218,13 @@ XXX
 %calculated for point sources). Please provide sky brightness or image depth constraints per filter.}
 %\end{footnotesize}
 
-XXX
+We request $r$ and $g$ band image depths of $\lesssim23.5~{\rm mag}$ 
+and $i$ band depth of $\lesssim23.0~{\rm mag}$.  
+The depths may be relaxed at the begin and end of SMC observing season 
+in order to extend time interval each year.  
+
+SMC is located close to South ecliptic pole, hence can be observed independent of Moon phase.
+
 
 \subsection{Co-added image depth and/or total number of visits}
 %\begin{footnotesize}{\it  Constraints on the total co-added depth and/or total number of visits.
@@ -213,13 +232,22 @@ XXX
 %Please provide desired co-added depth and/or total number of visits per filter, if relevant.}
 %\end{footnotesize}
 
-XXX
+High detection efficiency for microlensing events requires uniform sampling and
+cadence on the order of $1~{\rm day}$.  This translates to on the order of
+2000 epochs % XXX
+after accounting for visibility and weather constraints.
+
+There is no direct constraint on the co-added image depth.
+
 
 \subsection{Number of visits within a night}
 %\begin{footnotesize}{\it Constraints on the number of exposures (or visits) in a night, especially if considering sequences of visits.  }
 %\end{footnotesize}
 
-XXX
+The optimal strategy is to take one or two epochs per night.  
+If there are multiple visits during one night, 
+then they should be separated by at least 1~hour.
+
 
 \subsection{Distribution of visits over time}
 %\begin{footnotesize}{\it Constraints on the timing of visits --- within a night, between nights, between seasons or
@@ -229,14 +257,25 @@ XXX
 %of filters, please describe.}
 %\end{footnotesize}
 
-XXX
+The detection of microlensing events is best done with uniform sampling.  
+We request higher cadence at the beginning of the survey 
+(until $>15$ epochs are collected in $r$, $g$, and $i$ bands), 
+because microlensing events can be found only after it is found, which stars are constant.  
+In order to achieve uniform cadence, 
+it may be necessary to observe the field at airmass as large as $2.0$.
+
 
 \subsection{Filter choice}
 %\begin{footnotesize}
 %{\it Please describe any filter constraints not included above.}
 %end{footnotesize}
 
-XXX
+The number of the monitored sources is the highest in $r$ band.  
+Slightly smaller number is in $g$ band, and 
+the third best filter is $i$.  Hence, we request 
+the relative number of epochs to be $4:2:1$ in $r$, $g$, and $i$ bands, respectively.  
+Having multi-band observations is important in order to characterize 
+the properties of sources in microlensing events. % XXX ref
 
 \subsection{Exposure constraints}
 %\begin{footnotesize}
@@ -244,42 +283,60 @@ XXX
 %Please comment on any constraints on the number of exposures in a visit.}
 %\end{footnotesize}
 
-XXX
+We request standard $2\times15~{\rm s}$ or $1\times30~{\rm s}$ visits.  
+The total exposure time per visit is constrained by desired depth of a single visit.  
+Saturation of brightest objects is not an issue because there are almost 
+no events with sources saturated in standard LSST visits and if an event 
+becomes brighter than saturation limit, then follow-up resources 
+will provide adequate photometric coverage.
+
 
 \subsection{Other constraints}
 %\begin{footnotesize}
 %{\it Any other constraints.}
 %\end{footnotesize}
 
-XXX
+% XXX
+There are no other constraints.
+
 
 \subsection{Estimated time requirement}
 %\begin{footnotesize}
 %{\it Approximate total time requested for these observations, using the guidelines available at \url{https://github.com/lsst-pst/survey_strategy_wp}.}
-% XXX - https://github.com/lsst-pst/survey_strategy_wp
 %\end{footnotesize}
 
-\vspace{.3in}
-
-XXX - table below
+The exposure time ($30~{\rm s}$) plus slew/settle and shutter open/close is only 
+$35~{\rm s}$.  The slew time is going to be relatively short.  The closest field 
+that is observed with standard Wide-Fast-Deep cadence in {\tt baseline\_2018a} 
+is separated by only $11.5^{\circ}$.  
+More importantly, one of the Deep Drilling fields (namely 
+${\rm R.A.} = 23^{\rm h}17^{\rm m}33^{\rm s}$, 
+${\rm Dec.} = -63^{\circ}19'16''$) is located only $13.2^{\circ}$ away.  
+Observations of this Deep Drilling field give many chances to slew to 
+the SMC field without too much overhead on slew and filter change.  
+We estimate that typical slew and settle time will be $15~{\rm s}$ 
+and a quarter of the visits will require filter change, which takes $120~{\rm s}$.  
+The average total time is $80~{\rm s}$ per visit.  
+The total time requested for 2000 visits is only $44.44~{\rm h}$ or 
+$0.18\%$ of the total time available ($24236~{\rm h}$).  
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{l|l|l|l}
+    \begin{tabular}{l|l}
         \toprule
         Properties & Importance \hspace{.3in} \\
         \midrule
-        Image quality &     \\
-        Sky brightness &  \\
-        Individual image depth &   \\
-        Co-added image depth &   \\
-        Number of exposures in a visit   &   \\
-        Number of visits (in a night)  &   \\ 
-        Total number of visits &   \\
-        Time between visits (in a night) &  \\
-        Time between visits (between nights)  &   \\
-        Long-term gaps between visits & \\
-        Other (please add other constraints as needed) & \\
+        Image quality &  2 \\
+        Sky brightness &  3 \\
+        Individual image depth & 1  \\
+        Co-added image depth &  3 \\
+        Number of exposures in a visit   &  3 \\
+        Number of visits (in a night)  &  1 \\ 
+        Total number of visits &  1 \\
+        Time between visits (in a night) & 2 \\
+        Time between visits (between nights)  &  1 \\
+        Long-term gaps between visits & 3 \\
+        Other (please add other constraints as needed) & 3 \\
         \bottomrule
     \end{tabular}
      \caption{{\bf Constraint Rankings:} Summary of the relative importance of various survey strategy constraints. Please rank the importance of each of these considerations, from 1=very important, 2=somewhat important, 3=not important. If a given constraint depends on other parameters in the table, but these other parameters are not important in themselves, please only mark the final constraint as important. For example, individual image depth depends on image quality, sky brightness, and number of exposures in a visit; if your science depends on the individual image depth but not directly on the other parameters, individual image depth would be `1' and the other parameters could be marked as `3', giving us the most flexibility when determining the composition of a visit, for example.}
@@ -289,16 +346,64 @@ XXX - table below
 \subsection{Technical trades}
 %\begin{footnotesize}
 %{\it To aid in attempts to combine this proposed survey modification with others, please address the following questions:
-%\begin{enumerate}
-%    \item What is the effect of a trade-off between your requested survey footprint (area) and requested co-added depth or number of visits?
-%    \item If not requesting a specific timing of visits, what is the effect of a trade-off between the uniformity of observations and the frequency of observations in time? e.g. a `rolling cadence' increases the frequency of visits during a short time period at the cost of fewer visits the rest of the time, making the overall sampling less uniform.
-%    \item What is the effect of a trade-off on the exposure time and number of visits (e.g. increasing the individual image depth but decreasing the overall number of visits)?
-%    \item What is the effect of a trade-off between uniformity in number of visits and co-added depth? Is there any benefit to real-time exposure time optimization to obtain nearly constant single-visit limiting depth?
-%    \item Are there any other potential trade-offs to consider when attempting to balance this proposal with others which may have similar but slightly different requests?
-%\end{enumerate}}
-%\end{footnotesize}
+\begin{footnotesize}
+\begin{enumerate}
+    \item[1.] What is the effect of a trade-off between your requested survey footprint (area) and requested co-added depth or number of visits?
+\end{enumerate}
+\end{footnotesize}
 
-XXX
+This proposal requests only a single pointing.  If the center of this pointing is significantly offset from 
+the SMC center, then high cadence in 2 or 3 fields would be required.  
+In that case, the increase in the area covered does significantly increase the total number of events.
+
+There is no constraint on co-added depth. 
+
+\begin{footnotesize}
+\begin{enumerate}
+    \item[2.] If not requesting a specific timing of visits, what is the effect of a trade-off between the uniformity of observations and the frequency of observations in time? e.g. a `rolling cadence' increases the frequency of visits during a short time period at the cost of fewer visits the rest of the time, making the overall sampling less uniform.
+\end{enumerate}
+\end{footnotesize}
+
+Uniform cadence is requested and is most advantageous for proposed science program.  
+The increase of visit frequency (at the cost of lower frequency at other times) 
+will only help if short-lasting caustic-crossing features are predicted, but in 
+those cases follow-up resources should be used.
+
+\begin{footnotesize}
+\begin{enumerate}
+    \item[3.] What is the effect of a trade-off on the exposure time and number of visits (e.g. increasing the individual image depth but decreasing the overall number of visits)?
+\end{enumerate}
+\end{footnotesize}
+
+A decrease in overall number of visits is not desirable, because it will delay 
+the detection of the microlensing events.  It will allow additional very faint 
+events to be observed, but their value will be lower due to limiting depth of 
+follow-up observations. 
+
+\begin{footnotesize}
+\begin{enumerate}
+    \item[4.] What is the effect of a trade-off between uniformity in number of visits and co-added depth? Is there any benefit to real-time exposure time optimization to obtain nearly constant single-visit limiting depth?
+\end{enumerate}
+\end{footnotesize}
+
+Only a single field is proposed here and uniform sampling in time is more 
+important than uniform depth of each visit.
+
+\begin{footnotesize}
+\begin{enumerate}
+    \item[5.] Are there any other potential trade-offs to consider when attempting to balance this proposal with others which may have similar but slightly different requests?
+\end{enumerate}
+\end{footnotesize}
+
+We expect that there will be other proposals that request observations of SMC and LMC 
+\citep[see Sec.\, 7 in][]{marshall17}.  Most of the other proposals will probably 
+put stronger requests on observing a large are of the Clouds at the expense of lower cadence.  
+Our proposal is most beneficial at the center of SMC.  We expect variability studies 
+in SMC (including planetary transits) will be optimized towards the largest number of stars monitored, 
+which is in accordance with plan proposed here. Observations in $u$, $z$, and $y$ bands may be requested 
+in other proposals, but these bands have low value for science program proposed here.  
+If they are executed in addition to our program, then they will improve source characterization 
+to small degree. 
 
 \section{Performance Evaluation}
 %\begin{footnotesize}
@@ -359,9 +464,9 @@ Chilean observatories over 10-month long season in {\tt baseline\_2018a} run.
 For non-Chilean observatories there are on average 120 follow-up 
 epochs per season.  
 
-\citep{suzuki16}, \citep{udalski18b}
+%\citep{suzuki16}, \citep{udalski18b} XXX
 
-\citep{marigo17}% isochrones
+% \citep{marigo17}% isochrones XXX
 
 \vspace{.6in}
 
