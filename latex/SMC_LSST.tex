@@ -18,7 +18,7 @@
 \usepackage{amssymb,amsmath}
 \usepackage{graphicx}
 
-\title{First Extragalactic Exoplanets --- What We Gain From High Cadence Observations of SMC?}
+\title{The First Extragalactic Exoplanets --- What We Gain From High Cadence Observations of\\ the Small Magellanic Cloud?}
 \author{Rados\l{}aw Poleski and Przemek Mr\'oz}
 \date{November 2018}
 
@@ -182,7 +182,7 @@ the planet frequency can be derived if no planets are detected.
  \caption{Example light curves of a planetary microlensing event. 
 {\it Upper panel} shows light curve in {\tt baseline\_2018a} OpSim run.  
 The event is not detected due to low cadence in any single filter.  
-{\it Lower panel} shows light curve with enhanced coverege as proposed here. 
+{\it Lower panel} shows light curve with enhanced coverage as proposed here. 
 Event is detected early on which allows follow-up observations to be conducted 
 (pink symbols for Chilean and gray for non-Chilean).  
 The planetary anomaly on fading branch is clearly detected with $\Delta\chi^2 = 6000$ 
@@ -500,8 +500,7 @@ poorer weather conditions.  We simulate these additional follow-up epochs
 assuming there is a single epoch per night and it is shifted by 12~h 
 relative to observations in Chile.  Additionally, we select half of 
 the nights only.  To estimate photometric accuracy of these data, we follow 
-the same procedure as for Chilean follow-up observations.
-
+the same procedure as for Chilean follow-up observations. 
 For each event, the follow-up observations are assumed to start $12~{\rm h}$ 
 after the event detection and end $3t_{\rm E}$ after the event peaks.
 
@@ -522,10 +521,29 @@ to the values in the Galactic bulge fields.  % XXX
 We may expect that planet frequency is lower in the SMC, but for 
 calculating the FoM, we assume the same as in the Galactic bulge 
 and request sampling that leads to at least a few planets discovered under this assumption. 
-% XXX - specifics
 
+To evaluate the FoM, we multiply the number of microlensing events 
+in monitored sky-area over the survey time-span 
+by the fraction of events that show planetary 
+anomalies with significance $\Delta\chi^2>100$.  This fraction depends 
+on input from OpSim.  To estimate the number of events, 
+we multiply event rate in sky-area considered ($2.7\times10^{-7}~{\rm yr^{-1}}$), 
+the total number of sources ($1.7\times10^{9}$), 
+the fraction of sources that are in monitored area ($0.67$), 
+the fraction of sources in brightness range detectable with LSST ($0.098$), and 
+the survey time-span ($10~{\rm yr}$).  This results in $293$ events.  
+We simulated an observing strategy that follows our request 
+and estimated the fraction of events that show detectable planetary 
+anomalies to be $0.0097$.  Hence, the expected planet yield is $2.84$.  
+% XXX add value for baseline_2018a
+The threshold value of our FoM (at which point proposed science would be unsuccessful) 
+is $2.5$ and the ideal goal is $4.0$. 
 
-% \citep{marigo17}% isochrones XXX
+The software for evaluating FoM is available at:
+\begin{center}
+\url{https://github.com/rpoleski/LSST_SMC}
+\end{center}
+
 
 \vspace{.6in}
 
@@ -539,7 +557,7 @@ There are several implementations of algorithms that find
 the microlensing events in large datasets.  Also the algorithms for 
 scheduling observations of follow-up telescopes have been implemented.  
 We will build a dedicated pipeline that incorporates solutions from previous 
-observing campaings. 
+observing campaigns. 
 
 
 %  \section{Acknowledgements}  XXX
