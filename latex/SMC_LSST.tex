@@ -154,8 +154,8 @@ probed in the proposed experiment lie outside the snow lines of their hosts.
 The LSST telescope and camera have unique capability 
 to study microlensing events toward the SMC.  The photometry from the on-going 
 microlensing surveys is not deep enough to detect statistically significant 
-number of SMC events.  LSST field of view is large enough to cover almost 
-the whole region of interest in just a single pointing.
+number of SMC events.  The LSST field of view is large enough to cover 
+large part of region of interest in just one or two pointings. 
 
 It is possible that planet frequency in the SMC is lower than in 
 the Solar neighborhood.  The correlation between stellar metallicity 
@@ -216,8 +216,8 @@ If most of planet sensitivity comes from the LSST observations,
 then the cadence would need to be improved to 1 hour.  
 }
 
-We propose for on the order of 2000 epochs % XXX
-to be taken in a single field in the SMC.  
+We propose for on the order of 2000 visits
+to be taken each of two fields in the center of SMC.  
 The sampling should be uniform in time and $r$, $g$, and $i$ 
 filters give the highest yield.
 
@@ -228,10 +228,13 @@ filters give the highest yield.
 %\end{footnotesize}
 
 The large field of view of LSST allows covering almost the entire sky-region 
-of interest in a single pointing. 
-It would be best to center the pointing at  
-${\rm R.A.} = 0^{\rm h}58^{\rm m}$,  % 00:57:33.12 -73:00:07.20
-${\rm Dec.} = -73^{\circ}00'$. 
+of interest in two pointings centered at (${\rm R.A.}, {\rm Dec.}$) of 
+$(17.58^{\circ}, -72.40^{\circ})$ and 
+$(9.62^{\circ}, -73.82^{\circ})$.  
+These fields were selected with constrained that their separation is similar to 
+separations of fields in {\tt baseline\_2018a} OpSim run. 
+If single pointing is chosen, then it should be placed at
+$(14.50^{\circ}, -73.00^{\circ})$.  
 
 \subsection{Image quality}
 %\begin{footnotesize}{\it Constraints on the image quality (seeing).}\end{footnotesize}
@@ -333,20 +336,24 @@ There are no other constraints.
 %{\it Approximate total time requested for these observations, using the guidelines available at \url{https://github.com/lsst-pst/survey_strategy_wp}.}
 %\end{footnotesize}
 
-The exposure time ($30~{\rm s}$) plus slew/settle and shutter open/close is  
-$35~{\rm s}$.  The slew time is going to be relatively short.  The closest field 
+The exposure time ($30~{\rm s}$) plus shutter open/close is  
+$32~{\rm s}$.  The slew time is going to be relatively short.  The closest field 
 that is observed with the standard Wide-Fast-Deep cadence in {\tt baseline\_2018a} 
 is separated by only $11^{\circ}$.  
 More importantly, one of the Deep Drilling fields (namely 
-${\rm R.A.} = 23^{\rm h}17^{\rm m}33^{\rm s}$, 
-${\rm Dec.} = -63^{\circ}19'16''$) is located only $13^{\circ}$ away.  
+${\rm R.A.} = 23.29^{\circ}$, 
+${\rm Dec.} = -63.32^{\circ}$) is located only $13^{\circ}$ away.  
 Observations of this Deep Drilling field give many chances to slew to 
-the SMC field without too much overhead on slew and filter change.  
+the SMC fields without too much overhead on slew and filter change.  
 We estimate that typical slew and settle time will be $15~{\rm s}$ 
-and a quarter of the visits will require filter change, which takes $120~{\rm s}$.  
-The average total time is $80~{\rm s}$ per visit.  
-The total time requested for 2000 visits is only $44.44~{\rm h}$ or 
-$0.18\%$ of the total time available ($24236~{\rm h}$).  
+for the first field and $5~{\rm s}$ for the second field.  
+We also estimate that a quarter of the visits will require filter change, which takes $120~{\rm s}$.  
+The average total time of a visit in both fields is thus 
+$120~{\rm s}/4 + 15~{\rm s} + 32~{\rm s} + 5~{\rm s} + 32~{\rm s} = 114~{\rm s}$.  
+The total time requested for 2000 visits is only $63.33~{\rm h}$ or 
+$0.26\%$ of the total time available ($24236~{\rm h}$).  
+If only a single field is observed, then these numbers are 
+$77~{\rm s}$, $42.78~{\rm h}$, and $0.18\%$, respectively. 
 
 \begin{table}[ht]
     \centering
@@ -380,11 +387,10 @@ $0.18\%$ of the total time available ($24236~{\rm h}$).
 \end{enumerate}
 \end{footnotesize}
 
-This proposal requests only a single pointing.  If the center of this pointing is significantly offset from 
-the SMC center, then a high cadence in 2 or 3 fields would be required.  
-In that case, the increase in the area covered does significantly increase the total number of events.
+We request observations of two fields.  If only a single optimally-placed field is observed 
+with the same cadence, then the figure of merit presented below decreases by $19\%$.  
 
-There is no constraint on co-added depth. 
+There is no direct constraint on the co-added depth. 
 
 \begin{footnotesize}
 \begin{enumerate}
@@ -395,7 +401,7 @@ There is no constraint on co-added depth.
 The uniform cadence is requested and is most advantageous for the proposed 
 science program.  The increase of visit frequency (at the cost of lower 
 frequency at other times) will only help if short-lasting caustic-crossing 
-features are predicted, but in those cases the follow-up resources should be used.
+features are predicted, but in those cases the follow-up resources should be used, not LSST.
 
 \begin{footnotesize}
 \begin{enumerate}
@@ -406,7 +412,7 @@ features are predicted, but in those cases the follow-up resources should be use
 A decrease in overall number of visits is not desirable, because it will delay 
 the detection of the microlensing events.  It will allow additional very faint 
 events to be observed, but their value will be lower due to the limited depth of 
-follow-up observations. 
+the follow-up observations. 
 
 \begin{footnotesize}
 \begin{enumerate}
@@ -414,7 +420,7 @@ follow-up observations.
 \end{enumerate}
 \end{footnotesize}
 
-Only a single field is proposed here and a uniform sampling in time is more 
+Only two fields are proposed here and a uniform sampling in time is more 
 important than uniform depth of each visit.
 
 \begin{footnotesize}
