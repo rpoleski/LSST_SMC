@@ -18,7 +18,7 @@ parameters = {"t_0": 2460998.103228466, "u_0": 0.050822751022266965, "t_E": 145.
 t_start = 815.
 t_stop = 1110.
 y_lim = [23.45, 19.75]
-size = (10, 6)
+size = (10, 7.4)
 file_out = '../latex/plot_1.png'
 
 # settings end here
