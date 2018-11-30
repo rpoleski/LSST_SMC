@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{25}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Calchi Novati} {et~al.}(2014){Calchi Novati}, {Bozza}, {Bruni},
@@ -92,6 +92,13 @@
 \bibitem[{{Mr{\'o}z} \& {Poleski}(2018)}]{mroz18b}
 {Mr{\'o}z}, P. \& {Poleski}, R. 2018, \aj, 155, 154
 
+\bibitem[{{Mr{\'o}z} {et~al.}(2018){Mr{\'o}z}, {Ryu}, {Skowron}, {Udalski},
+  {Gould}, {Szyma{\'n}ski}, {Soszy{\'n}ski}, {Poleski}, {Pietrukowicz},
+  {Koz{\l}owski}, {Pawlak}, {Ulaczyk}, {OGLE Collaboration}, {Albrow}, {Chung},
+  {Jung}, {Han}, {Hwang}, {Shin}, {Yee}, {Zhu}, {Cha}, {Kim}, {Kim}, {Kim},
+  {Lee}, {Lee}, {Lee}, {Park}, {Pogge}, \& {KMTNet Collaboration}}]{mroz18a}
+{Mr{\'o}z}, P., {Ryu}, Y.-H., {Skowron}, J., {et~al.} 2018, \aj, 155, 121
+
 \bibitem[{{Paczy\'nski}(1986)}]{paczynski86}
 {Paczy\'nski}, B. 1986, \apj, 304, 1
 
@@ -112,6 +119,28 @@
   {Matsubara}, {Muraki}, {Ohnishi}, {Rattenbury}, {Saito}, {Sullivan},
   {Suzuki}, {Tristram}, {Wakiyama}, \& {Yonehara}}]{shvartzvald16a}
 {Shvartzvald}, Y., {Maoz}, D., {Udalski}, A., {et~al.} 2016, \mnras, 457, 4089
+
+\bibitem[{{Shvartzvald} {et~al.}(2015){Shvartzvald}, {Udalski}, {Gould}, {Han},
+  {Bozza}, {Friedmann}, {Hundertmark}, {and}, {Beichman}, {Bryden}, {Calchi
+  Novati}, {Carey}, {Fausnaugh}, {Gaudi}, {Henderson}, {Kerr}, {Pogge},
+  {Varricatt}, {Wibking}, {Yee}, {Zhu}, {Spitzer Team}, {Poleski}, {Pawlak},
+  {Szyma{\'n}ski}, {Skowron}, {Mr{\'o}z}, {Koz{\l}owski}, {Wyrzykowski},
+  {Pietrukowicz}, {Pietrzy{\'n}ski}, {Soszy{\'n}ski}, {Ulaczyk}, {OGLE Group},
+  {Choi}, {Park}, {Jung}, {Shin}, {Albrow}, {Park}, {Kim}, {Lee}, {Cha}, {Kim},
+  {Lee}, {KMTNet Group}, {Maoz}, {Kaspi}, {Wise Group}, {Street}, {Tsapras},
+  {Bachelet}, {Dominik}, {Bramich}, {Horne}, {Snodgrass}, {Steele}, {Menzies},
+  {Figuera Jaimes}, {Wambsganss}, {Schmidt}, {Cassan}, {Ranc}, {Mao}, {Dong},
+  {RoboNet}, {D'Ago}, {Scarpetta}, {Verma}, {J{\o}rgensen}, {Kerins},
+  {Skottfelt}, \& {MiNDSTEp}}]{shvartzvald15}
+{Shvartzvald}, Y., {Udalski}, A., {Gould}, A., {et~al.} 2015, \apj, 814, 111
+
+\bibitem[{{Shvartzvald} {et~al.}(2017){Shvartzvald}, {Yee}, {Calchi Novati},
+  {Gould}, {Lee}, {Beichman}, {Bryden}, {Carey}, {Gaudi}, {Henderson}, {Zhu},
+  {Spitzer team}, {Albrow}, {Cha}, {Chung}, {Han}, {Hwang}, {Jung}, {Kim},
+  {Kim}, {Kim}, {Lee}, {Park}, {Pogge}, {Ryu}, {Shin}, \& {KMTNet
+  group}}]{shvartzvald17b}
+{Shvartzvald}, Y., {Yee}, J.~C., {Calchi Novati}, S., {et~al.} 2017, \apjl,
+  840, L3
 
 \bibitem[{{Suzuki} {et~al.}(2016){Suzuki}, {Bennett}, {Sumi}, {Bond}, {Rogers},
   {Abe}, {Asakura}, {Bhattacharya}, {Donachie}, {Freeman}, {Fukui}, {Hirao},

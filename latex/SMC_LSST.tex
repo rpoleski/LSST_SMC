@@ -88,7 +88,12 @@ finding extragalactic exoplanets using gravitational microlensing
 technique.  
 
 Microlensing is sensitive to the lens mass, not light, hence, 
-it allows one to find very faint objects.  Microlensing searches of exoplanets in M31 
+it allows one to find very faint objects.  Previous microlensing 
+discoveries include Neptune-mass free floating planet \citep{mroz18a}, 
+an Earth-mass planet around a brown dwarf \citep{shvartzvald17b}, and 
+a binary lens with a stellar remnant \citep{shvartzvald15}. 
+In the case of the SMC events, in most cases even the light from the planet host will not be detectable.  
+Microlensing searches of exoplanets in M31 
 have not yet found planets, mainly due too a small number of events 
 \citep{ingrosso09,calchinovati14,lee15}.  The other possibility of 
 finding extragalactic exoplanets with LSST --- the transit method applied 
@@ -100,7 +105,9 @@ higher cadence, so that microlensing events can be found early and
 detection of planetary signatures in these events could be done using 
 LSST data (if cadence is high enough) or using photometric follow-up 
 observations from smaller telescopes.  Microlensing events observed toward
-the SMC are almost exclusively self-lensing, i.e., both the lens and the source are in the SMC \citep{sahu98,wyrzykowski11b}.  As the SMC is stretched and elongated 
+the SMC are almost exclusively self-lensing, i.e., both the lens and 
+the source are in the SMC \citep{sahu98,wyrzykowski11b}.  As the SMC 
+is stretched and elongated 
 along the line-of-sight, the microlensing event rate is boosted.
 
 There are thousands of microlensing events discovered so far toward 
@@ -128,6 +135,20 @@ SMC events is $\approx3$ times longer than that of Galactic bulge events which l
 longer timescales of planetary anomalies.  One-hour cadence in the SMC 
 should be enough to efficiently detect and characterize gas-giant planets.  
 
+The two planet parameters that are readily measured for microlensing planets 
+are the mass ratio $q$ and the star-planet projected separation $s$, 
+which is expressed in units of the Einstein ring radius ($\theta_{\rm E}$).  
+The Einstein ring radius is a characteristic angular scale of 
+the microlensing events.  Median value of $\theta_{\rm E}$ projected 
+to the SMC distance corresponds to $3~{\rm AU}$.  The detection efficiency 
+is highest for planets with $0.7 < s < 1.6$, which translates to 
+a range from $2~{\rm AU}$ to $5~{\rm AU}$.  Median mass of the lens for 
+the SMC events is $0.2~M_{\odot}$, which is twice smaller than for 
+the Galactic bulge events.  The snow line lies at 
+$\approx 2.7 \left(M/M_{\odot}\right)~{\rm AU}$ and the planets 
+probed in proposed experiment lie significantly outside 
+the snow lines of their hosts. 
+
 The LSST telescope and camera have unique capability 
 to study microlensing events toward the SMC.  The photometry from the on-going 
 microlensing surveys is not deep enough to detect statistically significant 
@@ -146,19 +167,10 @@ the planet frequency can be derived if no planets are detected.
 
 
 
-% metallicity dependence: http://adsabs.harvard.edu/abs/2015AJ....149...14W
-% metallicity dependence: http://adsabs.harvard.edu/abs/2005ApJ...622.1102F
 % Thompson+14 http://adsabs.harvard.edu/abs/2013MNRAS.431...63T
 
 % LSST transiting planets papers:
 % http://adsabs.harvard.edu/abs/2017AJ....153..186J
-% http://adsabs.harvard.edu/abs/2015AJ....150...34J
-% http://adsabs.harvard.edu/abs/2015AJ....149...16L
-
-% SMC self-lensing:
-% http://adsabs.harvard.edu/abs/1998ApJ...508L.147S
-% http://adsabs.harvard.edu/abs/2011MNRAS.416.2949W - not always self-lensing
-
 
 
 \vspace{.6in}
@@ -408,7 +420,8 @@ If a wide area around the center of the SMC is proposed in other proposals
 than combining these observations with our program will lower the overheads. 
 
 
-\clearpage
+% \clearpage
+% \vspace{.6in}
 
 \section{Performance Evaluation}
 %\begin{footnotesize}
@@ -483,14 +496,11 @@ We simulate planetary systems assuming the planet frequency
 as derived from recent microlensing studies in Galactic bulge fields:
 \citet{suzuki16} and \citet{udalski18b}.  The planet frequency 
 is a function of microlensing parameters: 
-$q$ --- the star-planet mass ratio, and
-$s$ --- the star-planet separation projected on the plane of the sky and divided by Einstein ring radius.  % XXX defined before?
-Einstein ring radius is a characteristic angular scale of microlensing events.  
+mass ratio $q$ and projected separation $s$.
 For the SMC events, the Einstein ring radius is smaller than for bulge events, 
 but the lens is at larger distance, and these two effects approximately cancel out.  
 As a result, the values of $s$ in the SMC that are probed by microlensing are similar 
-to the values in the Galactic bulge fields.  
-% XXX - lens masses
+to the values in the Galactic bulge fields.  % XXX
 We may expect that planet frequency is lower in the SMC, but for 
 calculating the FoM, we assume the same as in the Galactic bulge 
 and request sampling that leads to at least a few planets discovered under this assumption. 
@@ -502,11 +512,16 @@ and request sampling that leads to at least a few planets discovered under this 
 \vspace{.6in}
 
 \section{Special Data Processing}
-\begin{footnotesize}
-{\it Describe any data processing requirements beyond the standard LSST Data Management pipelines and how these will be achieved.}
-\end{footnotesize}
+%\begin{footnotesize}
+%{\it Describe any data processing requirements beyond the standard LSST Data Management pipelines and how these will be achieved.}
+%\end{footnotesize}
 
-No special data processing is needed. % XXX
+Standard photometric data processing of LSST data will be enough.  
+There are several implementations of algorithms that find 
+the microlensing events in large datasets.  Also the algorithms for 
+scheduling observations of follow-up telescopes have been implemented.  
+We will build a dedicated pipeline that incorporates solutions from previous 
+observing campaings. 
 
 
 %  \section{Acknowledgements}  XXX
