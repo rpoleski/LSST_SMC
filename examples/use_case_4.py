@@ -34,6 +34,8 @@ for parameters_ in parameters_all:
     ulens = UlensLSST(opsim_data, parameters, f_source, f_blend)
     ulens.find_detection_time()
     print("Event detection:", ulens.detection_time, ulens.detection_band)
+    if ulens.detection_time is None:
+        continue
 
     ulens.add_follow_up()
 

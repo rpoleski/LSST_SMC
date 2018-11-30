@@ -169,6 +169,7 @@ class UlensLSST(object):
         sigma_flux = temp[1]
         
         simulated = model_flux + np.random.normal(scale=sigma_flux) # XXX negative flux
+        simulated[simulated < 0.] = 0.
         
         if self._model.n_lenses == 2:
             diff = (model_flux - simulated) / sigma_flux
@@ -247,10 +248,12 @@ class UlensLSST(object):
             datasets.append(data)
 
         if self._follow_up_Chilean is not None:
-            datasets.append(self._follow_up_Chilean)
+            if self._follow_up_Chilean.n_epochs > 0:
+                datasets.append(self._follow_up_Chilean)
 
         if self._follow_up_nonChilean is not None:
-            datasets.append(self._follow_up_nonChilean)
+            if self._follow_up_nonChilean.n_epochs > 0:
+                datasets.append(self._follow_up_nonChilean)
 
         model = MM.Model({p: self._parameters[p] for p in ['t_0', 'u_0', 't_E']})
         self._event_PSPL = MM.Event(datasets, model)
