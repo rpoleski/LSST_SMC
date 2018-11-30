@@ -40,17 +40,21 @@ class SimulatedEvents(object):
 
         model_young_file:
             Pickled file with gaussian mixture model for young population.
+
+        mu_rel_file:
+            File with distribution of proper motions.
     """
     def __init__(
                 self, microlensing_file,
                 isochrone_old_file, isochrone_young_file,
-                model_old_file, model_young_file):
+                model_old_file, model_young_file, mu_rel_file=None):
 
         self._microlensing_file = microlensing_file
 
         self._bands = ['u', 'g', 'r', 'i', 'z', 'Y']
         self._isochrone_old = self._read_isochrone(isochrone_old_file)
         self._isochrone_young = self._read_isochrone(isochrone_young_file)
+        self._mu_rel_file = mu_rel_file
 
         with open(model_old_file, 'rb') as file_:
             self._GMM_old = pickle.load(file_, encoding='latin1')
@@ -257,8 +261,15 @@ class SimulatedEvents(object):
         log_t_E_rand = np.interp(prob, CDF, log_t_E)
         self._t_E = pow(10., log_t_E_rand)
 
-        mu_rel = np.random.normal(0.281, 0.135, self.n_samples)
-        mu_rel[mu_rel < 0.01] = 0.01
+        if self._mu_rel_file is None:
+            mu_rel = np.random.normal(0.281, 0.135, self.n_samples)
+            mu_rel[mu_rel < 0.01] = 0.01
+        else:
+            (mu_rel, weights) = np.loadtxt(self._mu_rel_file, unpack=True)
+            CDF_mu_rel = np.cumsum(weights)
+            CDF_mu_rel /= CDF_mu_rel[-1]
+            prob = np.random.uniform(0., 1., self.n_samples)
+            mu_rel = np.interp(prob, CDF_mu_rel, mu_rel)
         self._theta_E = self._t_E * mu_rel / 365.25 # mas
 
         radius = self._source_radius * 0.696e6 # km

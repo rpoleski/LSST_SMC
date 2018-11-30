@@ -11,9 +11,11 @@ model_young_file = "../data/model_yng.pkl"
 
 microlensing_file = "../data/model_fast.txt"
 
-out_file = "../data/simulated_events_001.json"
+mu_rel_file = "../data/mu_rel.txt"
 
 n_samples = 10000
+
+out_file = "../data/simulated_events_001.json"
 
 # settings end here
 
@@ -30,7 +32,7 @@ n_samples = 10000
 simulated = SimulatedEvents(
     microlensing_file,
     isochrone_old_file, isochrone_young_file,
-    model_old_file, model_young_file)
+    model_old_file, model_young_file, mu_rel_file)
 
 simulated.n_samples = n_samples
 
