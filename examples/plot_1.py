@@ -6,11 +6,20 @@ from ulens_lsst_smc.ulenslsst import UlensLSST
 from ulens_lsst_smc.utils import parse_dict
 
 
-opsim_data_file_1 = '../data/15_baseline2018a_16.56875_-72.89689_EXPANDED_v1.dat'
+opsim_data_file_1 = '../data/baseline2018a_16.56875_-72.89689.dat'
 opsim_data_file_2 = '../data/baseline2018a_16.56875_-72.89689_EXPANDED_v3.dat'
 
+file_out = None
+fig_args = {"left":0.06, "bottom":0.08, "right":.995, "top":.995}
+
 # Below we copy-paste from simulation:
-parameters = {"t_0": 2462776.427496204, "u_0": 0.002581080984985995, "t_E": 88.51904690894331, "rho": 0.0008723830817228773, "s": 1.1059326739098874, "q": 0.001709377976772477, "alpha": 350.09511924152406, "source_flux_u": 0.13161428424714847, "blending_flux_u": 4.79954509730335e-06, "source_flux_g": 0.29116646164855614, "blending_flux_g": 0.0001091440493875484, "source_flux_r": 0.34969823517494997, "blending_flux_r": 0.0004211143677613329, "source_flux_i": 0.35810435800565765, "blending_flux_i": 0.001032761521219054, "source_flux_z": 0.3473819188894729, "blending_flux_z": 0.001583434284274017, "source_flux_y": 0.3398491994583522, "blending_flux_y": 0.0019195527118489471}
+parameters = {"t_0": 2460998.103228466, "u_0": 0.050822751022266965, "t_E": 145.63994066924565, "rho": 0.0005071493178190735, "s": 0.9642818673294677, "q": 0.00011988059592119628, "alpha": 146.71606262815484, "source_flux_u": 0.08684171855959938, "blending_flux_u": 0.03522237950558175, "source_flux_g": 0.1955208070977924, "blending_flux_g": 0.11030176475766786, "source_flux_r": 0.24707720378487355, "blending_flux_r": 0.17840043711647197, "source_flux_i": 0.25944931350887507, "blending_flux_i": 0.21858384178345014, "source_flux_z": 0.25552235838458154, "blending_flux_z": 0.23977827529130874, "source_flux_y": 0.2517196376158122, "blending_flux_y": 0.2526652959967369}
+
+t_start = 815.
+t_stop = 1110.
+y_lim = [23.45, 19.75]
+size = (10, 6)
+file_out = '../latex/plot_1.png'
 
 # settings end here
 
@@ -47,12 +56,25 @@ print(ulens_2.delta_chi2_BL_PL)
 
 kwargs = {
     'subtract_2460000': True}
+kwargs_model = {'t_start': 2460000.+t_start, 't_stop': 2460000.+t_stop}
+kwargs_model.update(kwargs)
 
 gs = gridspec.GridSpec(2, 1, height_ratios=[1, 1])
-plt.figure()
-plt.subplot(gs[0])
-ulens_1.plot_data(kwargs_data=kwargs, kwargs_model=kwargs)
-plt.subplot(gs[1])
-ulens_2.plot_data(kwargs_data=kwargs, kwargs_model=kwargs)
+plt.figure(figsize=size)
 
-plt.show()
+plt.subplot(gs[0])
+ulens_1.plot_data(kwargs_data=kwargs, kwargs_model=kwargs_model)
+plt.xlim(t_start, t_stop)
+plt.ylim(*y_lim)
+
+plt.subplot(gs[1])
+ulens_2.plot_data(kwargs_data=kwargs, kwargs_model=kwargs_model)
+plt.xlim(t_start, t_stop)
+plt.ylim(*y_lim)
+
+plt.subplots_adjust(**fig_args)
+
+if file_out is None:
+    plt.show()
+else:
+    plt.savefig(file_out)

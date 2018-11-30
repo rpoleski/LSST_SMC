@@ -16,6 +16,7 @@
 \usepackage{hyperref}
 \usepackage{natbib}
 \usepackage{amssymb,amsmath}
+\usepackage{graphicx}
 
 \title{First Extragalactic Exoplanets --- What We Gain From High Cadence Observations of SMC?}
 \author{Rados\l{}aw Poleski and Przemek Mr\'oz}
@@ -165,15 +166,31 @@ planet frequency rate and request the experiment with yield of a few planets
 so that, scientifically interesting upper limits on 
 the planet frequency can be derived if no planets are detected.
 
-
-
 % Thompson+14 http://adsabs.harvard.edu/abs/2013MNRAS.431...63T
 
 % LSST transiting planets papers:
 % http://adsabs.harvard.edu/abs/2017AJ....153..186J
 
 
-\vspace{.6in}
+% \vspace{.6in}
+
+\clearpage
+
+\begin{figure}
+ \includegraphics[width=\textwidth]{plot_1}
+ \caption{Example light curves of a planetary microlensing event. 
+{\it Upper panel} shows light curve in {\tt baseline\_2018a} OpSim run.  
+The event is not detected due to low cadence in any single filter.  
+{\it Lower panel} shows light curve with enhanced coverege as proposed here. 
+Event is detected early on which allows follow-up observations to be conducted 
+(pink symbols for Chilean and gray for non-Chilean).  
+The planetary anomaly on fading branch is clrealy detected with $\Delta\chi^2 = 6000$ 
+when compared to point-source point-lens model.  
+All datasets are scaled to a single magnitude system ($r$ in this case) 
+using source and blending fluxes.  The Einstein timescale is $145~{\rm d}$, 
+$s=0.96$, and $q=1.2\times10^{-4}$. } 
+\end{figure}
+
 
 \section{Technical Description}
 %\begin{footnotesize}
