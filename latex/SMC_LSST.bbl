@@ -1,4 +1,4 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{22}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{{Calchi Novati} {et~al.}(2014){Calchi Novati}, {Bozza}, {Bruni},
@@ -112,6 +112,25 @@
   {Matsubara}, {Muraki}, {Ohnishi}, {Rattenbury}, {Saito}, {Sullivan},
   {Suzuki}, {Tristram}, {Wakiyama}, \& {Yonehara}}]{shvartzvald16a}
 {Shvartzvald}, Y., {Maoz}, D., {Udalski}, A., {et~al.} 2016, \mnras, 457, 4089
+
+\bibitem[{{Suzuki} {et~al.}(2016){Suzuki}, {Bennett}, {Sumi}, {Bond}, {Rogers},
+  {Abe}, {Asakura}, {Bhattacharya}, {Donachie}, {Freeman}, {Fukui}, {Hirao},
+  {Itow}, {Koshimoto}, {Li}, {Ling}, {Masuda}, {Matsubara}, {Muraki},
+  {Nagakane}, {Onishi}, {Oyokawa}, {Rattenbury}, {Saito}, {Sharan}, {Shibai},
+  {Sullivan}, {Tristram}, {Yonehara}, \& {MOA Collaboration}}]{suzuki16}
+{Suzuki}, D., {Bennett}, D.~P., {Sumi}, T., {et~al.} 2016, \apj, 833, 145
+
+\bibitem[{{Udalski} {et~al.}(2018){Udalski}, {Ryu}, {Sajadian}, {Gould}, {Mr{\v
+  a}{\l}z}, {Poleski}, {Szyma{\'n}ski}, {Skowron}, {Soszy{\'n}ski},
+  {Koz{\l}owski}, {Pietrukowicz}, {Ulaczyk}, {Pawlak}, {Rybicki}, {Iwanek},
+  {Albrow}, {Chung}, {Han}, {Hwang}, {Jung}, {Shin}, {Shvartzvald}, {Yee},
+  {Zang}, {Zhu}, {Cha}, {Kim}, {Kim}, {Kim}, {Lee}, {Lee}, {Lee}, {Park},
+  {Pogge}, {Bozza}, {Dominik}, {Helling}, {Hundertmark}, {J{\o}rgensen},
+  {Longa-Pe{\~n}a}, {Lowry}, {Burgdorf}, {Campbell-White}, {Ciceri}, {Evans},
+  {Figuera Jaimes}, {Fujii}, {Haikala}, {Henning}, {Hinse}, {Mancini},
+  {Peixinho}, {Rahvar}, {Rabus}, {Skottfelt}, {Snodgrass}, {Southworth}, \&
+  {von Essen}}]{udalski18b}
+{Udalski}, A., {Ryu}, Y.-H., {Sajadian}, S., {et~al.} 2018, \actaa, 68, 1
 
 \bibitem[{{Wang} \& {Fischer}(2015)}]{wang15}
 {Wang}, J. \& {Fischer}, D.~A. 2015, \aj, 149, 14

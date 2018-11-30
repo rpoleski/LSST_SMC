@@ -17,7 +17,7 @@
 \usepackage{natbib}
 \usepackage{amssymb,amsmath}
 
-\title{Extragalactic Exoplanets -- Higher Cadence Observations of SMC}
+\title{First Extragalactic Exoplanets\\ Thanks to Higher Cadence Observations of SMC}
 \author{Rados\l{}aw Poleski and Przemek Mr\'oz}
 \date{November 2018}
 
@@ -422,30 +422,36 @@ than combining these observations with our program will lower the overheads.
 
 % XXX  - (Limit: 2 pages)
 
+To evaluate performance of particular observing strategy 
+in achieving our science goals, we propose {\it figure of merit} (FoM), 
+which is a number of SMC planets discovered.  The number is evaluated 
+assuming fiducial planet frequency and taking into account the follow-up
+observations, as described below.
+
 In our simulations of detection efficiency, 
 we have included intensive photometric follow-up observations.  
 The optimum follow-up would be uniform and 24-hour coverage of 
-every on-going microlensing event with high photometric accuracy. 
-SMC lies close to the South celestial pole and there is a limited number of 
+every on-going microlensing event with a high photometric accuracy. 
+The SMC lies close to the South celestial pole and there is a limited number of 
 observatories with good astronomical climate that can observe the SMC.  
 There is a large number of telescopes located in Chile, but they cover a narrow 
 range of longitudes.  Outside Chile, the only observatories with large aperture telescopes are 
 Siding Spring Observatory (Australia) and 
 South African Astronomical Observatory (South Africa).  
 The number of clear nights and seeing are better for Chilean observatories.  
-Taking all these aspects into account, we divide follow-up observations 
+Taking all these aspects into account, we divide the follow-up observations 
 into Chilean and non-Chilean.  
 For Chilean observatories, we assume observations are taken when the SMC center 
 is at the altitude $>30^{\circ}$ and Sun is at the altitude $<-15^{\circ}$ 
 as seen from Cerro Pach\'{o}n.  We select nights for which these conditions 
-are fulfilled for at least $30~{\rm min.}$ and assume uniform cadence of 
+are fulfilled for at least $30~{\rm min}$ and assume uniform cadence of 
 $1~{\rm h}$.  To simulate the impact of clouds, we remove epochs for which 
 there is no LSST observations (in any field) $1~{\rm h}$ prior or after 
 considered follow-up epoch.  There are in total ten optical telescopes 
 in Chile that have aperture of $4~{\rm m}$ or larger.  
 We assume that follow-up observations will be conducted 
 using a $\approx4$-${\rm m}$ aperture telescope and the same exposure time as for LSST.  
-The same accuracy should be achievable using longer (and still reasonable) 
+The same photometric accuracy should be achievable using longer (and still reasonable) 
 exposure times on a 2-m class telescopes.  To account for airmass, seeing, and 
 sky transparency on photometric accuracy, we use the accuracy of the closest 
 LSST observation with additional correction of $\delta m_5 = -0.53~{\rm mag}$ 
@@ -467,7 +473,23 @@ Chilean observatories over 10-month long season in {\tt baseline\_2018a} run.
 For non-Chilean observatories there are on average 120 follow-up 
 epochs per season.  
 
-%\citep{suzuki16}, \citep{udalski18b} XXX
+We simulate planetary systems assuming the planet frequency 
+as derived from recent microlensing studies in Galactic bulge fields:
+\citet{suzuki16} and \citet{udalski18b}.  The planet frequency 
+is a function of microlensing parameters: 
+$q$ --- the star-planet mass ratio, and
+$s$ --- the star-planet separation projected on the plane of the sky and divided by Einstein ring radius.  % XXX defined before?
+Einstein ring radius is a characteristic angular scale of microlensing events.  
+For the SMC events, the Einstein ring radius is smaller than for bulge events, 
+but the lens is at larger distance, and these two effects approximately cancel out.  
+As a result, projected separations in SMC that are probed by microlensing are similar 
+to values in Galactic bulge fields.  
+% XXX - lens masses
+We may expect that planet frequency is lower in SMC, but for 
+calculating FoM, we assume the same as in the Galactic bulge 
+and request sampling that leads to at least a few planets discovered under this assumption. 
+% XXX - specifics
+
 
 % \citep{marigo17}% isochrones XXX
 
