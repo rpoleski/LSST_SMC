@@ -24,8 +24,8 @@ class SimulatedEvents(object):
 
     Arguments :
         microlensing_file: 
-            File used to simulate basic parameters.
-            Format not yet specified - XXX.
+            File used to simulate t_E distribution. The first column of this
+            file is log10(t_E), the second is weight.
 
         isochrone_old_file:
             File with isochrone for _old_ population.
@@ -241,7 +241,9 @@ class SimulatedEvents(object):
                             self._blending_flux[i][band] += Utils.get_flux_from_mag(mag)
 
     def generate_fluxes(self):
-        """XXX"""
+        """
+        Generate source and blending fluxes.
+        """
         self._generate_source_mass()
         self._generate_source_and_lens_flux()
         self._generate_additional_blending_flux()
@@ -302,8 +304,6 @@ class SimulatedEvents(object):
         <http://adsabs.harvard.edu/abs/2016ApJ...833..145S>`_ and
         `Udalski et al. (2018)
         <http://adsabs.harvard.edu/abs/2018AcA....68....1U>`_.
-
-        XXX - do we modify it?
         """
         log_s = np.random.uniform(
             self._min_log_s, self._max_log_s, self.n_samples)

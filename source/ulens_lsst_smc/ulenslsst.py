@@ -36,12 +36,15 @@ class UlensLSST(object):
         follow_up_file_1: *str*, optional
             Name of a 2-column file with MJD and 5 sigma depth
             (which will be degraded). If not provided, then it defaults
-            to baseline2018a file. This is used to simulate Chilean follow-up.
+            to baseline2018a file
+            (data/baseline2018a_followup_epochs_v1.dat). This is used 
+            to simulate Chilean follow-up.
 
         follow_up_file_2: *str*, optional
             Name of a 2-column file with MJD and 5 sigma depth
             (which will be degraded). If not provided, then it defaults
-            to baseline2018a file (different from the one above).
+            to baseline2018a file (different from the one above:
+            data/baseline2018a_followup_epochs_v1.dat).
             This is used to simulate non-Chilean follow-up.
 
     Attributes :
@@ -74,7 +77,6 @@ class UlensLSST(object):
         self._parameters = parameters
         self._model = MM.Model(self._parameters, coords=coords)
 
-        #self.bands = ['u', 'g', 'r', 'i', 'z', 'y'] # XXX - CHECK THAT
         self.bands = ['r', 'g', 'i', 'z', 'y', 'u']
         self._simulated_flux = {b: None for b in self.bands}
         self._sigma_flux = {b: None for b in self.bands}
@@ -168,7 +170,7 @@ class UlensLSST(object):
         temp = MM.Utils.get_flux_and_err_from_mag(model_mag, sigma_mag)
         sigma_flux = temp[1]
         
-        simulated = model_flux + np.random.normal(scale=sigma_flux) # XXX negative flux
+        simulated = model_flux + np.random.normal(scale=sigma_flux)
         simulated[simulated < 0.] = 0.
         
         if self._model.n_lenses == 2:

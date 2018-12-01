@@ -41,7 +41,8 @@ def get_dicts_from_file(file_name):
 
 def parse_dict(input_dict):
     """
-    XXX
+    Divides input dict in three separate dictionaries,
+    i.e., it separate source_flux_X and blending_flux_X keywords.
     """
     parameters = {}
     source_flux = {}
@@ -90,7 +91,12 @@ def xyz_to_ra_dec(x, y, z):
     return alf,dec,dist
 
 def random_power_law(alpha, min_, max_, u=None):
-    """XXX"""
+    """
+    Generate random number or numbers using power law with index
+    -alpha for min_ to max_. The u value is *float* or *np.ndarray*
+    and it is random number in [0,1] range. If u is *None* (default)
+    then it's drawn inside the function.
+    """
     slope = 1. - alpha
     lim_0 = pow(min_, slope)
     lim_1 = pow(max_, slope)
@@ -100,7 +106,15 @@ def random_power_law(alpha, min_, max_, u=None):
     return pow(u, 1./slope)
 
 def random_broken_power_law(alpha_1, alpha_2, x_0, x_1, x_2):
-    """XXX"""
+    """
+    Generates random number for broken power law. The exponent
+    is -alpha_1 between x_0 and x_1, and -alpha_2 between
+    x_1 and x_2. All input and output is *float*. Example usage
+    for Kroupa IMF:
+    
+    random_broken_power_law(1.3, 2.3, 0.08, 0.5, 150.)
+    
+    """
     slope_1 = 1. - alpha_1
     slope_2 = 1. - alpha_2
     int_1 = (pow(x_1, slope_1) - pow(x_0, slope_1)) / slope_1
