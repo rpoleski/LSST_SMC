@@ -19,16 +19,6 @@ out_file = "../data/simulated_events_001.json"
 
 # settings end here
 
-# What we need:
-#  RA, Dec
-#  source flux
-#  lens flux
-#  other blending fluxes
-#  t_E
-#  rho
-#  t_0, u_0
-#  add planet: s, q, alpha
-
 simulated = SimulatedEvents(
     microlensing_file,
     isochrone_old_file, isochrone_young_file,
@@ -42,3 +32,4 @@ simulated.generate_microlensing_parameters()
 simulated.add_planets()
 
 simulated.save(out_file)
+
