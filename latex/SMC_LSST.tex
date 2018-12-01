@@ -1,14 +1,3 @@
-% Template for white paper submissions for the 
-% LSST Call for Observing Strategies for DeepDrilling and Minisurveys 
-% 
-% The call for white papers can be found at https://github.com/lsst-pst/survey_strategy/blob/master/latex/WPcall2018.pdf
-% The deadline for submissions is November 29, 2018
-% Please submit your white paper via email to lsst-survey-strategy@lists.lsst.org or via a pull request on this repository 
-% (https://github.com/lsst-pst/survey_strategy_wp) after creating a subdirectory named LASTNAME_FIRSTNAME_NUMBER.
-
-% For help with white papers or the submission process, please post at http://community.lsst.org/c/sci/survey-strategy
-
-
 \documentclass[12pt,letterpaper]{article}
 \usepackage[top=1in,bottom=1.5in,left=1in,right=1in]{geometry}
 \usepackage[utf8]{inputenc}
@@ -40,44 +29,18 @@ an extensive photometric follow-up program.
 
 \section{White Paper Information}
 Please contact Radek Poleski, \url{radek.poleski@gmail.com}, with any questions about this white paper.  
-% Please provide contact information (name and email address) of the appropriate author(s) for this white paper.
-% In addition, please provide the following categorization for your white paper:
 \begin{enumerate} 
 \item {\bf Science Category:} Exploring the Changing Sky
-% which of the four main LSST science themes are addressed? Are there other
-% science programs addressed by this white paper?
-% 
-% Website https://www.lsst.org/science gives 4 science categories, in short: 
-% DM & DE, SS, variable Sky, and MW.
 \item {\bf Survey Type Category:} mini survey
-% please choose one of the following possibilities: the main `wide-fast-deep'
-%   survey, mini survey, Deep Drilling field, Target of Opportunity observation, Other (provide details). 
-\item {\bf Observing Strategy Category:} %please choose one of the following possibilities: 
-%    \begin{itemize} 
-%     \item a specific observing strategy to enable specific time domain science, 
-%	that is relatively agnostic to where the telescope is pointed (e.g., a science case enabled 
-%	by relatively deep precise time-resolved multi-color photometry). 
-%     \item a specific pointing or set of pointings that is (relatively) agnostic of the detailed observing 
-%	strategy or cadence, (e.g., a science case enabled by very deep precise multi-color 
-%	photometry)
-%      \item an integrated program with science that hinges on the combination of pointing and detailed 
+\item {\bf Observing Strategy Category:} 
       an integrated program with science that hinges on the combination of pointing and detailed 
 	observing strategy (e.g., search for variable stars in the 
 	LMC/SMC). 
-%       \item other category (please describe).
-%    \end{itemize}  
 \end{enumerate}  
 
 \clearpage
 
 \section{Scientific Motivation}
-% \begin{footnotesize}
-%{\it Describe the scientific justification for this white paper in the context
-%of your field, as well as the importance to the general program of astronomy, 
-%including the relevance over the next decade. 
-%Describe other relevant data, and justify why LSST is the best facility for these observations.
-%(Limit: 2 pages + 1 page for figures.)} % XXX
-% \end{footnotesize}
 
 Deep understanding of planet formation and evolution requires 
 studying planets in a wide range of environments.  Currently known exoplanets 
@@ -116,7 +79,6 @@ along the line-of-sight, the microlensing event rate is boosted.
 There are thousands of microlensing events discovered so far toward 
 the Galactic bulge.  Among these events, about 70 planetary events have 
 already been published and more are being analyzed.  
-% https://exoplanetarchive.ipac.caltech.edu/index.html
 The planetary companion to the microlensing host star shows its presence via 
 a short-lasting anomaly \citep{mao91,gould92} on top of 
 a point-source point-lens event \citep{paczynski86}.  The length of 
@@ -185,11 +147,6 @@ planet frequency function and request the experiment with yield of a few planets
 so that, scientifically interesting upper limits on 
 the planet frequency can be derived even if no planets are detected.
 
-% Thompson+14 http://adsabs.harvard.edu/abs/2013MNRAS.431...63T
-
-% LSST transiting planets papers:
-% http://adsabs.harvard.edu/abs/2017AJ....153..186J
-
 \vspace{.1in}
 
 %\clearpage
@@ -211,20 +168,9 @@ the planet frequency can be derived even if no planets are detected.
 
 
 \section{Technical Description}
-%\begin{footnotesize}
-%{\it Describe your survey strategy modifications or proposed observations. Please comment on each observing constraint
-%below, including the technical motivation behind any constraints. Where relevant, indicate
-%if the constraint applies to all requested observations or a specific subset. Please note which 
-%constraints are not relevant or important for your science goals.}
-%\end{footnotesize}
-
-% NO CONTENT HERE - ONLY IN SUBSECTIONS
 
 
 \subsection{High-level description}
-%\begin{footnotesize}
-% XXX {\it Describe or illustrate your ideal sequence of observations.}
-%\end{footnotesize}
 
 {\bf Here we present technical description of a program where LSST 
 sampling is sufficient to discover microlensing events in the SMC, 
@@ -239,10 +185,6 @@ The sampling should be uniform in time and $r$, $g$, and $i$
 filters give the highest yield.
 
 \subsection{Footprint -- pointings, regions and/or constraints}
-%\begin{footnotesize}{\it Describe the specific pointings or general region (RA/Dec, Galactic longitude/latitude or 
-%Ecliptic longitude/latitude) for the observations. Please describe any additional requirements, especially if there
-%are no specific constraints on the pointings (e.g. stellar density, galactic dust extinction).}
-%\end{footnotesize}
 
 The large field of view of LSST allows covering almost the entire sky-region 
 of interest in two pointings centered at (${\rm R.A.}, {\rm Dec.}$) of 
@@ -254,16 +196,11 @@ If only a single pointing is chosen, then it should be placed at
 $(14.50^{\circ}, -73.00^{\circ})$.  
 
 \subsection{Image quality}
-%\begin{footnotesize}{\it Constraints on the image quality (seeing).}\end{footnotesize}
 
 Due to high crowding of the field, we request observations with seeing $< 2~{\rm arcsec}$.
 
 
 \subsection{Individual image depth and/or sky brightness}
-%\begin{footnotesize}{\it Constraints on the sky brightness in each image and/or individual image depth for point sources.
-%Please differentiate between motivation for a desired sky brightness or individual image depth (as 
-%calculated for point sources). Please provide sky brightness or image depth constraints per filter.}
-%\end{footnotesize}
 
 We request $r$ and $g$ band image depths of $\gtrsim23.5~{\rm mag}$ 
 and $i$ band depth of $\gtrsim23.0~{\rm mag}$.  
@@ -275,10 +212,6 @@ independently of the Moon phase.
 
 
 \subsection{Co-added image depth and/or total number of visits}
-%\begin{footnotesize}{\it  Constraints on the total co-added depth and/or total number of visits.
-%Please differentiate between motivations for a given co-added depth and total number of visits. 
-%Please provide desired co-added depth and/or total number of visits per filter, if relevant.}
-%\end{footnotesize}
 
 The high detection efficiency of microlensing events requires a uniform sampling and
 a cadence on the order of $1~{\rm day}$.  This translates to on the order of
@@ -289,8 +222,6 @@ There is no direct constraint on the co-added image depth.
 
 
 \subsection{Number of visits within a night}
-%\begin{footnotesize}{\it Constraints on the number of exposures (or visits) in a night, especially if considering sequences of visits.  }
-%\end{footnotesize}
 
 The optimal strategy is to take one or two visits per night.  
 If there are multiple visits during one night, 
@@ -298,12 +229,6 @@ then they should be separated by at least 1~hour.
 
 
 \subsection{Distribution of visits over time}
-%\begin{footnotesize}{\it Constraints on the timing of visits --- within a night, between nights, between seasons or
-%between years (which could be relevant for rolling cadence choices in the WideFastDeep. 
-%Please describe optimum visit timing as well as acceptable limits on visit timing, and options in
-%case of missed visits (due to weather, etc.). If this timing should include particular sequences
-%of filters, please describe.}
-%\end{footnotesize}
 
 The detection of microlensing events is best done with a uniform sampling.  
 We request higher cadence at the beginning of the survey 
@@ -314,22 +239,15 @@ it may be necessary to observe the field at airmass as large as $2.0$.
 
 
 \subsection{Filter choice}
-%\begin{footnotesize}
-%{\it Please describe any filter constraints not included above.}
-%end{footnotesize}
 
 The number of observable sources is the largest in the $r$ band.  
 The slightly smaller number of visible sources is in the $g$ band, and 
 the third best filter is $i$.  Hence, we request 
 the relative number of epochs to be $4:2:1$ in $r$, $g$, and $i$ bands, respectively.  
 Having multi-band observations is important in order to characterize 
-the properties of sources in microlensing events. % XXX ref
+the properties of sources in microlensing events. 
 
 \subsection{Exposure constraints}
-%\begin{footnotesize}
-%{\it Describe any constraints on the minimum or maximum exposure time per visit required (or alternatively, saturation limits).
-%Please comment on any constraints on the number of exposures in a visit.}
-%\end{footnotesize}
 
 We request standard $2\times15~{\rm s}$ or $1\times30~{\rm s}$ visits.  
 The total exposure time per visit is constrained by the desired depth of a single visit.  
@@ -340,18 +258,11 @@ will provide an adequate photometric coverage.
 
 
 \subsection{Other constraints}
-%\begin{footnotesize}
-%{\it Any other constraints.}
-%\end{footnotesize}
 
-% XXX
 There are no other constraints.
 
 
 \subsection{Estimated time requirement}
-%\begin{footnotesize}
-%{\it Approximate total time requested for these observations, using the guidelines available at \url{https://github.com/lsst-pst/survey_strategy_wp}.}
-%\end{footnotesize}
 
 The exposure time ($30~{\rm s}$) plus shutter open/close is  
 $32~{\rm s}$.  The slew time is going to be relatively short.  The closest field 
@@ -396,8 +307,6 @@ $77~{\rm s}$, $42.78~{\rm h}$, and $0.18\%$, respectively.
 \end{table}
 
 \subsection{Technical trades}
-%\begin{footnotesize}
-%{\it To aid in attempts to combine this proposed survey modification with others, please address the following questions:
 \begin{footnotesize}
 \begin{enumerate}
     \item[1.] What is the effect of a trade-off between your requested survey footprint (area) and requested co-added depth or number of visits?
@@ -461,23 +370,7 @@ If a wide area around the center of the SMC is proposed in other proposals
 than combining these observations with our program will lower the overheads. 
 
 
-% \clearpage
-% \vspace{.6in}
-
 \section{Performance Evaluation}
-%\begin{footnotesize}
-%{\it Please describe how to evaluate the performance of a given survey in achieving your desired
-%science goals, ideally as a heuristic tied directly to the observing strategy (e.g. number of visits obtained
-%within a window of time with a specified set of filters) with a clear link to the resulting effect on science.
-%More complex metrics which more directly evaluate science output (e.g. number of eclipsing binaries successfully
-%identified as a result of a given survey) are also encouraged, preferably as a secondary metric.
-%If possible, provide threshold values for these metrics at which point your proposed science would be unsuccessful 
-%and where it reaches an ideal goal, or explain why this is not possible to quantify. While not necessary, 
-%if you have already transformed this into a MAF metric, please add a link to the code (or a PR to 
-%\href{https://github.com/lsst-nonproject/sims_maf_contrib}{sims\_maf\_contrib}) in addition to the text description. (Limit: 2 pages).}
-%\end{footnotesize}
-
-% XXX  - (Limit: 2 pages)
 
 To evaluate performance of particular observing strategy 
 in achieving our science goals, we propose {\bf Figure of Merit} (FoM), 
@@ -540,7 +433,7 @@ mass ratio $q$ and projected separation $s$.
 For the SMC events, the Einstein ring radius is smaller than for bulge events, 
 but the lens is at larger distance, and these two effects approximately cancel out.  
 As a result, the values of $s$ in the SMC that are probed by microlensing are similar 
-to the values in the Galactic bulge fields.  % XXX
+to the values in the Galactic bulge fields.  
 We may expect that the planet frequency is lower in the SMC, but for 
 calculating the FoM, we assume the same as in the Galactic bulge 
 and request sampling that leads to at least a few planets are discovered under this assumption. 
@@ -569,12 +462,9 @@ The software for evaluating FoM is available at:
 \end{center}
 
 
-\vspace{.3in}
+\vspace{.2in}
 
 \section{Special Data Processing}
-%\begin{footnotesize}
-%{\it Describe any data processing requirements beyond the standard LSST Data Management pipelines and how these will be achieved.}
-%\end{footnotesize}
 
 Standard photometric data processing of LSST data will be enough.  
 There are several implementations of algorithms that find 
@@ -584,7 +474,7 @@ We will build a dedicated pipeline that incorporates solutions from previous
 observing campaigns. 
 
 
-%  \section{Acknowledgements}  XXX
+%  \section{Acknowledgements} 
 
 \section{References}
 
